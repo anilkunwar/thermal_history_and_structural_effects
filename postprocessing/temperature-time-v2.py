@@ -27,6 +27,8 @@ if csv_files:
     fig_height = st.sidebar.slider("Figure Height (inches)", min_value=5, max_value=20, value=6)
     line_thickness = st.sidebar.slider("Line Thickness", min_value=1, max_value=10, value=2)
     label_fontsize = st.sidebar.slider("Label Font Size", min_value=10, max_value=30, value=16)
+    # Sidebar option for legend font size
+    legend_fontsize = st.sidebar.slider("Legend Font Size", min_value=10, max_value=30, value=14)
 
     # Grid and Box options
     st.sidebar.header("Axes Settings")
@@ -74,7 +76,8 @@ if csv_files:
     # Customize the plot
     ax.set_xlabel(x_label, fontsize=label_fontsize)
     ax.set_ylabel(y_label, fontsize=label_fontsize)
-    ax.legend(fontsize=14, loc="best")
+    #ax.legend(fontsize=14, loc="best")
+    ax.legend(fontsize=legend_fontsize, loc="best")
     ax.tick_params(axis="both", which="major", labelsize=20)
     ax.tick_params(axis="both", which="both", width=2.5, length=8.0)
     ax.tick_params(axis="x", rotation=x_ticks_rotation)
