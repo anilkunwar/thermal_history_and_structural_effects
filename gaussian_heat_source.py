@@ -65,20 +65,21 @@ fig1.update_layout(scene=dict(
                         zaxis_title='Intensity',
                         xaxis=dict(title_font=dict(size=20)),  # Adjust X-axis font size
                         yaxis=dict(title_font=dict(size=20)),  # Adjust Y-axis font size
-                        zaxis=dict(title_font=dict(size=20), range=[0, max_intensity]),   # Adjust Z-axis font size and range
-                                              
+                        zaxis=dict(title_font=dict(size=20), range=[0, max_intensity]),   # Adjust Z-axis font size and range                      
                     ),
-                  annotations=[ dict(
-                                      showarrow=False,
-                                      text="P = 250 W",
-                                      font=dict(size=50),
-                                      xref="paper",  # Refer to paper coordinates
-                                      yref="paper",  # Refer to paper coordinates
-                                      x=0.5,  # Horizontal position
-                                      y=1.1   # Vertical position
-                                      )
-                                    ],
+                  # annotations is also same as the title
+                  #annotations=[ dict(
+                  #                    showarrow=False,
+                  #                    text="P = 250 W",
+                  #                    font=dict(size=50),
+                  #                    xref="paper",  # Refer to paper coordinates
+                  #                    yref="paper",  # Refer to paper coordinates
+                  #                    x=0.5,  # Horizontal position
+                  #                    y=1.1   # Vertical position
+                  #                    )
+                  #                  ],
                   #title=dict(text="P = 250 W", font=dict(size=50), automargin=True, yref='paper'),
+                  title=dict(text=f"P = {P1} W", font=dict(size=50), automargin=True, yref='paper'),
                   width=800, height=600)
 fig1.update_coloraxes(colorbar=dict(
                         exponentformat='none',     # Prevents exponent format
@@ -98,9 +99,9 @@ fig2.update_layout(scene=dict(
                         xaxis=dict(title_font=dict(size=20)),  # Adjust X-axis font size
                         yaxis=dict(title_font=dict(size=20)),  # Adjust Y-axis font size
                         zaxis=dict(title_font=dict(size=20), range=[0, max_intensity]),   # Adjust Z-axis font size and range
-                        #title=dict(text="P = 350 W", font=dict(size=50), automargin=True, yref='paper'),
                     ),
-                  title=dict(text="P = 350 W", font=dict(size=50), automargin=True, yref='paper'),
+                  #title=dict(text="P = 350 W", font=dict(size=50), automargin=True, yref='paper'),
+                  title=dict(text=f"P = {P2} W", font=dict(size=50), automargin=True, yref='paper'),
                   width=800, height=600)
 fig2.update_coloraxes(colorbar=dict(
                         exponentformat='none',     # Prevents exponent format
