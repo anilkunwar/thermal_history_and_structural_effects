@@ -75,7 +75,7 @@ fig1.update_layout(scene=dict(
                                       x=0.5,  # Horizontal position
                                       y=1.1   # Vertical position
                                       )
-                                    ]                        
+                                    ],                        
                     ),
                   #title=dict(text="P = 250 W", font=dict(size=50), automargin=True, yref='paper'),
                   width=800, height=600)
