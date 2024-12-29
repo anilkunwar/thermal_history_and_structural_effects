@@ -46,8 +46,8 @@ intensity_P2 = super_gaussian_intensity(A, P2, k, eta, r_0, C, x_values, y_value
 globalmax_intensity = max(np.max(intensity_P1), np.max(intensity_P2))
 
 # Find the maximum and minimum power values
-max_laserpower = max(np.max(P1), np.max(P2))
-min_laserpower = min(np.max(P1), np.max(P2))
+max_laserpower = max(P1,P2)
+min_laserpower = min(P1,P2)
 
 
 # Display the maximum peak intensity
