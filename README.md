@@ -1,9 +1,9 @@
-# thermal_history_and_structural_effects(2024)
+# Thermal history of laser processing and structural effects in AlMgSiZr multicomponent alloys (2024)
 
-#FEM
+# FEM (Continuum scale modeling)
 ...................
 
-#MD
+# MD (Atomistic simulations)
 ...................
 # Visualization of heat source for P = 250.W and 350 W. 
 [![Gaussian Heat Source via Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://gaussianheatsource.streamlit.app/)
