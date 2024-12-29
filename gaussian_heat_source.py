@@ -66,7 +66,9 @@ fig1.update_layout(scene=dict(
                         xaxis=dict(title_font=dict(size=20)),  # Adjust X-axis font size
                         yaxis=dict(title_font=dict(size=20)),  # Adjust Y-axis font size
                         zaxis=dict(title_font=dict(size=20), range=[0, max_intensity]),   # Adjust Z-axis font size and range
-                        annotations=[ dict(
+                                              
+                    ),
+                  annotations=[ dict(
                                       showarrow=False,
                                       text="P = 250 W",
                                       font=dict(size=50),
@@ -75,8 +77,7 @@ fig1.update_layout(scene=dict(
                                       x=0.5,  # Horizontal position
                                       y=1.1   # Vertical position
                                       )
-                                    ],                        
-                    ),
+                                    ],
                   #title=dict(text="P = 250 W", font=dict(size=50), automargin=True, yref='paper'),
                   width=800, height=600)
 fig1.update_coloraxes(colorbar=dict(
