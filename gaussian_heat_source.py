@@ -63,7 +63,7 @@ localmax_intensity = min(np.max(intensity_P1), np.max(intensity_P2))
 st.sidebar.write(f'The maximum peak intensity at {min_laserpower}W is: {globalmax_intensity:.2e} W/$\mu$m²')
 
 
-# Create 3D surface plot for P1 with the same z range as the maximum intensity
+# Create 3D surface plot for P1 with the same z range as the global maximum intensity
 fig1 = go.Figure(data=[go.Surface(z=intensity_P1, x=x_values, y=y_values, colorscale=cmaps[colormap_index], cmin=0, cmax=globalmax_intensity)])
 fig1.update_layout(scene=dict(
                         xaxis_title='X-axis', 
@@ -71,7 +71,7 @@ fig1.update_layout(scene=dict(
                         zaxis_title='Intensity',
                         xaxis=dict(title_font=dict(size=20)),  # Adjust X-axis font size
                         yaxis=dict(title_font=dict(size=20)),  # Adjust Y-axis font size
-                        zaxis=dict(title_font=dict(size=20), range=[0, max_intensity]),   # Adjust Z-axis font size and range                      
+                        zaxis=dict(title_font=dict(size=20), range=[0, globalmax_intensity]),   # Adjust Z-axis font size and range                      
                     ),
                   # annotations is also same as the title
                   #annotations=[ dict(
@@ -96,7 +96,7 @@ fig1.update_coloraxes(colorbar=dict(
 # Show plot for P1
 st.plotly_chart(fig1, use_container_width=True)
 
-# Create 3D surface plot for P2 with the same z range as the maximum intensity
+# Create 3D surface plot for P2 with the same z range as the global maximum intensity
 fig2 = go.Figure(data=[go.Surface(z=intensity_P2, x=x_values, y=y_values, colorscale=cmaps[colormap_index], cmin=0, cmax=globalmax_intensity)])
 fig2.update_layout(scene=dict(
                         xaxis_title='X-axis', 
@@ -104,7 +104,7 @@ fig2.update_layout(scene=dict(
                         zaxis_title='Intensity',
                         xaxis=dict(title_font=dict(size=20)),  # Adjust X-axis font size
                         yaxis=dict(title_font=dict(size=20)),  # Adjust Y-axis font size
-                        zaxis=dict(title_font=dict(size=20), range=[0, max_intensity]),   # Adjust Z-axis font size and range
+                        zaxis=dict(title_font=dict(size=20), range=[0, globalmax_intensity]),   # Adjust Z-axis font size and range
                     ),
                   #title=dict(text="P = 350 W", font=dict(size=50), automargin=True, yref='paper'),
                   title=dict(text=f"P = {P2} W", font=dict(size=50), automargin=True, yref='paper'),
