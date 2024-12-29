@@ -43,18 +43,24 @@ intensity_P1 = super_gaussian_intensity(A, P1, k, eta, r_0, C, x_values, y_value
 intensity_P2 = super_gaussian_intensity(A, P2, k, eta, r_0, C, x_values, y_values)
 
 # Find the maximum intensity across both plots
-max_intensity = max(np.max(intensity_P1), np.max(intensity_P2))
+globalmax_intensity = max(np.max(intensity_P1), np.max(intensity_P2))
+
+# Find the maximum and minimum power values
+max_laserpower = max(np.max(P1), np.max(P2))
+min_laserpower = min(np.max(P1), np.max(P2))
 
 
 # Display the maximum peak intensity
 st.sidebar.subheader('Maximum Peak Intensity')
-st.sidebar.write(f'The maximum peak intensity at 350 W is: {max_intensity:.2e} W/$\mu$m²')
+#st.sidebar.write(f'The maximum peak intensity at 350 W is: {globalmax_intensity:.2e} W/$\mu$m²')
+st.sidebar.write(f'The maximum peak intensity at {max_laserpower}W is: {globalmax_intensity:.2e} W/$\mu$m²')
 
 # Find the maximum intensity for 250 W
 localmax_intensity = min(np.max(intensity_P1), np.max(intensity_P2))
 
 # Display the maximum peak intensity at 250 W
-st.sidebar.write(f'The maximum peak intensity at 250 W is: {localmax_intensity:.2e} W/$\mu$m²')
+#st.sidebar.write(f'The maximum peak intensity at 250 W is: {localmax_intensity:.2e} W/$\mu$m²')
+st.sidebar.write(f'The maximum peak intensity at {min_laserpower}W is: {globalmax_intensity:.2e} W/$\mu$m²')
 
 
 # Create 3D surface plot for P1 with the same z range as the maximum intensity
