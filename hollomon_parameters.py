@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 
 # Streamlit App
-st.title("Sigma and n Averages Calculator")
+st.title("Finding average values for data of Hollomon Parameters")
 
 # File upload
 uploaded_file = st.file_uploader("Upload your CSV file", type=["csv"])
