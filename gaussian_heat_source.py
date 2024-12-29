@@ -60,7 +60,7 @@ localmax_intensity = min(np.max(intensity_P1), np.max(intensity_P2))
 
 # Display the maximum peak intensity at 250 W
 #st.sidebar.write(f'The maximum peak intensity at 250 W is: {localmax_intensity:.2e} W/$\mu$m²')
-st.sidebar.write(f'The maximum peak intensity at {min_laserpower}W is: {globalmax_intensity:.2e} W/$\mu$m²')
+st.sidebar.write(f'The maximum peak intensity at {min_laserpower}W is: {localmax_intensity:.2e} W/$\mu$m²')
 
 
 # Create 3D surface plot for P1 with the same z range as the global maximum intensity
