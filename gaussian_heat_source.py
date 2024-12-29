@@ -46,25 +46,25 @@ intensity_P2 = super_gaussian_intensity(A, P2, k, eta, r_0, C, x_values, y_value
 globalmax_intensity = max(np.max(intensity_P1), np.max(intensity_P2))
 
 # Find the maximum and minimum power values
-#max_laserpower = max(P1,P2)
-#min_laserpower = min(P1,P2)
+max_laserpower = max(P1,P2)
+min_laserpower = min(P1,P2)
 
 
 # Display the maximum peak intensity
 st.sidebar.subheader('Maximum Peak Intensity')
-st.sidebar.write(f'The maximum peak intensity at 350 W is: {globalmax_intensity:.2e} W/$\mu$m²')
-#st.sidebar.write(f'The maximum peak intensity at {max_laserpower}W is: {globalmax_intensity:.2e} W/$\mu$m²')
+#st.sidebar.write(f'The maximum peak intensity at 350 W is: {globalmax_intensity:.2e} W/$\mu$m²')
+st.sidebar.write(f'The maximum peak intensity at {max_laserpower}W is: {globalmax_intensity:.2e} W/$\mu$m²')
 
 # Find the maximum intensity for 250 W
 localmax_intensity = min(np.max(intensity_P1), np.max(intensity_P2))
 
 # Display the maximum peak intensity at 250 W
-st.sidebar.write(f'The maximum peak intensity at 250 W is: {localmax_intensity:.2e} W/$\mu$m²')
-#st.sidebar.write(f'The maximum peak intensity at {min_laserpower}W is: {globalmax_intensity:.2e} W/$\mu$m²')
+#st.sidebar.write(f'The maximum peak intensity at 250 W is: {localmax_intensity:.2e} W/$\mu$m²')
+st.sidebar.write(f'The maximum peak intensity at {min_laserpower}W is: {globalmax_intensity:.2e} W/$\mu$m²')
 
 
 # Create 3D surface plot for P1 with the same z range as the maximum intensity
-fig1 = go.Figure(data=[go.Surface(z=intensity_P1, x=x_values, y=y_values, colorscale=cmaps[colormap_index], cmin=0, cmax=max_intensity)])
+fig1 = go.Figure(data=[go.Surface(z=intensity_P1, x=x_values, y=y_values, colorscale=cmaps[colormap_index], cmin=0, cmax=globalmax_intensity)])
 fig1.update_layout(scene=dict(
                         xaxis_title='X-axis', 
                         yaxis_title='Y-axis', 
@@ -97,7 +97,7 @@ fig1.update_coloraxes(colorbar=dict(
 st.plotly_chart(fig1, use_container_width=True)
 
 # Create 3D surface plot for P2 with the same z range as the maximum intensity
-fig2 = go.Figure(data=[go.Surface(z=intensity_P2, x=x_values, y=y_values, colorscale=cmaps[colormap_index], cmin=0, cmax=max_intensity)])
+fig2 = go.Figure(data=[go.Surface(z=intensity_P2, x=x_values, y=y_values, colorscale=cmaps[colormap_index], cmin=0, cmax=globalmax_intensity)])
 fig2.update_layout(scene=dict(
                         xaxis_title='X-axis', 
                         yaxis_title='Y-axis', 
