@@ -65,7 +65,7 @@ fig1.update_layout(scene=dict(
                         zaxis_title='Intensity',
                         xaxis=dict(title_font=dict(size=20)),  # Adjust X-axis font size
                         yaxis=dict(title_font=dict(size=20)),  # Adjust Y-axis font size
-                        zaxis=dict(title_font=dict(size=20), range=[0, max_intensity])   # Adjust Z-axis font size and range
+                        zaxis=dict(title_font=dict(size=20), range=[0, max_intensity]),   # Adjust Z-axis font size and range
                         title={'text': "Power = 250 W",          # Title text
                                'x': 0.5,                           # Horizontal alignment (0=left, 1=right, 0.5=center)
                                'xanchor': 'center',                # Anchoring relative to `x`
