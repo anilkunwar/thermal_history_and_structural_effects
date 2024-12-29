@@ -3,7 +3,8 @@ import numpy as np
 import plotly.graph_objects as go
 import math
 
-st.title('Super-Gaussian Heat Source Visualization. The default is a Gaussian Heat Source with SGO (k) = 1.0 ')
+#st.title('Super-Gaussian Heat Source Visualization. The default is a Gaussian Heat Source with SGO (k) = 1.0 ')
+st.title('Comparative visualization of Gaussian Heat Source with two laser power values')
 
 # Define the colormap list globally
 cmaps = ['balance', 'bluered', 'hsv', 'jet', 'picnic', 'portland', 'rainbow', 'rdylbu_r', 'spectral_r', 'turbo']
