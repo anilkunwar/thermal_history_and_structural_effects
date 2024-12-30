@@ -18,7 +18,9 @@ where,
 -  $\\varepsilon$ : **True strain**  
 -  $n$ : **Strain hardening exponent**
 
-This app calculates the average values of the strength coefficient \\($\sigma_0$) and the strain hardening exponent \\($n$) from uploaded experimental datasets.
+The Hollomon parameters are temperature dependent.
+After the experimental dataset is uploaded as a csv file, this app calculates the average values of the strength coefficient \\($\sigma_0$) and the strain hardening exponent \\($n$) are computed at a given temperature.
+Then the visualization is done for \\($\sigma_0$)-T and \\($n$)-T.
 """)
 
 # File upload
@@ -38,6 +40,16 @@ if uploaded_file:
         # Display the updated DataFrame
         st.write("Data with Averages:")
         st.write(data)
+        
+        # Plot the results of statistical calculations
+        fig_savg = px.line(data, x="T(oC)", y="savg", title="Average Strength Coefficient (\(s_{\text{avg}}\)) vs. Temperature",
+                           labels={"T(oC)": "Temperature (°C)", "savg": "Average Strength Coefficient (\(s_{\text{avg}}\))"})
+        fig_navg = px.line(data, x="T(oC)", y="navg", title="Average Strain Hardening Exponent (\(n_{\text{avg}}\)) vs. Temperature",
+                           labels={"T(oC)": "Temperature (°C)", "navg": "Average Strain Hardening Exponent (\(n_{\text{avg}}\))"})
+
+        # Display the plots
+        st.plotly_chart(fig_savg)
+        st.plotly_chart(fig_navg)
 
         # Allow user to download the updated DataFrame
         csv = data.to_csv(index=False).encode('utf-8')
