@@ -66,9 +66,9 @@ if uploaded_file:
 
         # Update layout for the plots
         fig_savg.update_layout(
-            title="σ\u2080 vs. Temperature (°C)",  # Use Unicode for σ₀
+            title="\u03C3\u2080 vs. Temperature (\2070C)",  # Use Unicode for σ₀
             xaxis_title="Temperature (°C)",
-            yaxis_title="σ\u2080 (MPa)",  # Use Unicode for σ₀
+            yaxis_title="\u03C3\u2080 (MPa)",  # Use Unicode for σ₀
             font=dict(size=16)
         )
 
@@ -84,8 +84,8 @@ if uploaded_file:
         st.plotly_chart(fig_navg, use_container_width=True)
 
         # Plot the results of statistical calculations
-        fig_savg = px.line(data, x="T(oC)", y="savg", title="Average Strength Coefficient (s\u2080) vs. Temperature",
-                           labels={"T(oC)": "Temperature (°C)", "savg": "Average Strength Coefficient (s\u2080)"})
+        fig_savg = px.line(data, x="T(oC)", y="savg", title="Average Strength Coefficient (\u03C3\u2080) vs. Temperature",
+                           labels={"T(oC)": "Temperature (°C)", "savg": "Average Strength Coefficient (\u03C3\u2080)"})
         fig_navg = px.line(data, x="T(oC)", y="navg", title="Average Strain Hardening Exponent (n) vs. Temperature",
                            labels={"T(oC)": "Temperature (°C)", "navg": "Average Strain Hardening Exponent (n)"})
 
