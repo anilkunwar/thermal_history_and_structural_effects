@@ -72,11 +72,12 @@ if uploaded_file:
         ))
 
         # Add fitted line for savg
+        fitted_line_savg = "\u03C3\u2080 = %.2f T + %.2f" % tuple(popt_savg)  # Directly format with Unicode
         fig_savg.add_trace(go.Scatter(
             x=data['T(oC)'],
             y=fitted_savg,
             mode="lines",
-            name="Fitted Line: " + "\u03C3\u2080 = %.2f T + %.2f" % tuple(popt_savg)
+            name="Fitted Line: " +  fitted_line_savg 
         ))
 
         # Create Plotly plot for navg
