@@ -46,7 +46,7 @@ if uploaded_file:
         fig_savg = go.Figure()
         fig_savg.add_trace(go.Scatter(x=data["T(oC)"], y=data["savg"], mode="lines+markers", name=r"$s_{\text{avg}}$"))
         fig_savg.update_layout(
-            title=r"Average Strength Coefficient ($s_{\text{avg}}$) vs. Temperature",
+            title=r"Average Strength Coefficient (u"\u03A3"+"{avg}") vs. Temperature",
             xaxis_title="Temperature (°C)",
             yaxis_title=r"$s_{\text{avg}}$ (MPa)",
             font=dict(size=16),
