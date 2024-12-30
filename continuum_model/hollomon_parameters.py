@@ -54,7 +54,7 @@ if uploaded_file:
             x=data['T(oC)'],
             y=data['savg'],
             mode="lines+markers",
-            name=r'$\sigma_0$ (Average Strength Coefficient)'
+            name=r'$$\sigma_0$$ (Average Strength Coefficient)'
         ))
 
         # Create Plotly plot for navg
