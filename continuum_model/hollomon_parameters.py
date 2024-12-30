@@ -3,6 +3,23 @@ import pandas as pd
 
 # Streamlit App
 st.title("Finding average values for data of Hollomon Parameters")
+# Introduction to Hollomon Parameters
+st.markdown("""
+### What are Hollomon Parameters?
+The **Hollomon equation** describes the relationship between stress and strain in materials as follows:
+
+$$
+\\sigma_H = \\sigma_0 \\cdot \\varepsilon^n
+$$
+
+where,
+-  $\sigma_H$: **True stress**  
+-  $\sigma_0$ : **Strength coefficient**  
+-  $\\varepsilon$ : **True strain**  
+-  $n$ : **Strain hardening exponent**
+
+This app calculates the average values of the strength coefficient \\($\sigma_0$) and the strain hardening exponent \\($n$) from uploaded experimental datasets.
+""")
 
 # File upload
 uploaded_file = st.file_uploader("Upload your CSV file", type=["csv"])
