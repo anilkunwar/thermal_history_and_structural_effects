@@ -20,7 +20,7 @@ where,
 
 During laser processing, the temperature distribution is non-uniform in the AlMgSiZr alloy sample. The Hollomon parameters are temperature dependent.
 After the experimental dataset is uploaded as a csv file, this app calculates the average values of the strength coefficient \\($\sigma_0$) and the strain hardening exponent \\($n$) are computed at a given temperature.
-Then the visualization is done for \\$\sigma_0$-T and \\$n$-T.
+Then the visualization is done for $\sigma_0$-T and $n$-T.
 """)
 
 # File upload
