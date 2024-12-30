@@ -48,53 +48,58 @@ if uploaded_file:
         st.write("Data with Averages:")
         st.write(data)
 
-        # Fit the data for savg vs. T
-        def linear_fit(x, a, b):
-            return a * x + b
-        
-        popt_savg, _ = curve_fit(linear_fit, data['T(oC)'], data['savg'])
-        fitted_savg = linear_fit(data['T(oC)'], *popt_savg)
+        # Define a parabolic function
+        def parabolic(x, a, b, c):
+            return a * x**2 + b * x + c
 
-        # Fit the data for navg vs. T
-        def linear_fit_n(x, a, b):
-            return a * x + b
-        
-        popt_navg, _ = curve_fit(linear_fit_n, data['T(oC)'], data['navg'])
-        fitted_navg = linear_fit_n(data['T(oC)'], *popt_navg)
+        # Fit savg vs Temperature
+        T = data['T(oC)'].values
+        savg = data['savg'].values
+        popt_savg, _ = curve_fit(parabolic, T, savg)
 
-         # Create Plotly plot for savg
+        # Fit navg vs Temperature
+        navg = data['navg'].values
+        popt_navg, _ = curve_fit(parabolic, T, navg)
+
+        # Generate fitted values
+        fitted_savg = parabolic(T, *popt_savg)
+        fitted_navg = parabolic(T, *popt_navg)
+
+        # Create Plotly plot for savg
         fig_savg = go.Figure()
         fig_savg.add_trace(go.Scatter(
-            x=data['T(oC)'],
-            y=data['savg'],
+            x=T,
+            y=savg,
             mode="lines+markers",
-            name="\u03C3\u2080 (Average Strength Coefficient)"  # Use Unicode for σ₀
+            name="\u03C3\u2080 (Average Strength Coefficient)",  # Use Unicode for σ₀
+            line=dict(color='blue'),  # Color of original data (blue)
+            marker=dict(color='blue')  # Color of markers for original data
         ))
-
-        # Add fitted line for savg
-        fitted_line_savg = "\u03C3\u2080 = %.2f T + %.2f" % tuple(popt_savg)  # Directly format with Unicode
         fig_savg.add_trace(go.Scatter(
-            x=data['T(oC)'],
+            x=T,
             y=fitted_savg,
             mode="lines",
-            name="Fitted Line: " +  fitted_line_savg 
+            name=f"Fitted Line: \u03C3\u2080 = {popt_savg[0]:.2e} T² + {popt_savg[1]:.2e} T + {popt_savg[2]:.2e}",  # Parabolic fit
+            line=dict(color='red')  # Color of the fitted curve (red)
         ))
 
         # Create Plotly plot for navg
         fig_navg = go.Figure()
         fig_navg.add_trace(go.Scatter(
-            x=data['T(oC)'],
-            y=data['navg'],
+            x=T,
+            y=navg,
             mode="lines+markers",
-            name="n (Average Strain Hardening Exponent)"  # Use Unicode for n
+            name="n (Average Strain Hardening Exponent)",
+            line=dict(color='green'),  # Color of original data (green)
+            marker=dict(color='green')  # Color of markers for original data
+            
         ))
-
-        # Add fitted line for navg
         fig_navg.add_trace(go.Scatter(
-            x=data['T(oC)'],
+            x=T,
             y=fitted_navg,
             mode="lines",
-            name="Fitted Line: " + "n = %.2f T + %.2f" % tuple(popt_navg)
+            name=f"Fitted Line: n = {popt_navg[0]:.2e} T² + {popt_navg[1]:.2e} T + {popt_navg[2]:.2e}",  # Parabolic fit
+            line=dict(color='orange')  # Color of the fitted curve (orange)
         ))
 
         # Update layout for the plots
