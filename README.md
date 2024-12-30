@@ -3,7 +3,7 @@
 # FEM (Continuum scale modeling)
 ...................
 # Visualization of heat source for P = 250.0 W and 350.0 W. 
-[![Gaussian Heat Source via Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://gaussianheatsource.streamlit.app/)
+[![Gaussian Heat Source via Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://gaussianheatsourcemodel.streamlit.app/)
 
 # Visualization of T-dependence of Hollomon parameters. 
 [![Hollomon parameters via Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://hollomonparameters.streamlit.app/)
