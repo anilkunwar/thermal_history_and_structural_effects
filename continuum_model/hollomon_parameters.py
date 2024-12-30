@@ -1,6 +1,6 @@
 import streamlit as st
 import pandas as pd
-import plotly.express as px
+#import plotly.express as px
 import plotly.graph_objects as go
 
 # Streamlit App
@@ -83,15 +83,16 @@ if uploaded_file:
         st.plotly_chart(fig_savg, use_container_width=True)
         st.plotly_chart(fig_navg, use_container_width=True)
 
-        # Plot the results of statistical calculations
-        fig_savg = px.line(data, x="T(oC)", y="savg", title="Average Strength Coefficient (\u03C3\u2080) vs. Temperature",
-                           labels={"T(oC)": "Temperature (\u00B0C)", "savg": "Average Strength Coefficient (\u03C3\u2080)"})
-        fig_navg = px.line(data, x="T(oC)", y="navg", title="Average Strain Hardening Exponent (n) vs. Temperature",
-                           labels={"T(oC)": "Temperature (\u00B0C)", "navg": "Average Strain Hardening Exponent (n)"})
+        ###########################################################
+        ## Plot the results of statistical calculations
+        #fig_savg = px.line(data, x="T(oC)", y="savg", title="Average Strength Coefficient (\u03C3\u2080) vs. Temperature",
+        #                   labels={"T(oC)": "Temperature (\u00B0C)", "savg": "Average Strength Coefficient (\u03C3\u2080)"})
+        #fig_navg = px.line(data, x="T(oC)", y="navg", title="Average Strain Hardening Exponent (n) vs. Temperature",
+        #                   labels={"T(oC)": "Temperature (\u00B0C)", "navg": "Average Strain Hardening Exponent (n)"})
 
-        # Display the plots
-        st.plotly_chart(fig_savg)
-        st.plotly_chart(fig_navg)
+        ## Display the plots
+        #st.plotly_chart(fig_savg)
+        #st.plotly_chart(fig_navg)
 
         # Allow user to download the updated DataFrame
         csv = data.to_csv(index=False).encode('utf-8')
