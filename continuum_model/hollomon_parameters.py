@@ -8,7 +8,6 @@ st.title("Finding average values for data of Hollomon Parameters")
 st.markdown("""
 ### What are Hollomon Parameters?
 The **Hollomon equation** describes the relationship between stress and strain in materials as follows:
-
 $$
 \\sigma_H = \\sigma_0 \\cdot \\varepsilon^n
 $$
@@ -19,9 +18,9 @@ where,
 -  $\\varepsilon$ : **True strain**  
 -  $n$ : **Strain hardening exponent**
 
-The Hollomon parameters are temperature dependent.
+During laser processing, the temperature distribution is non-uniform in the AlMgSiZr alloy sample. The Hollomon parameters are temperature dependent.
 After the experimental dataset is uploaded as a csv file, this app calculates the average values of the strength coefficient \\($\sigma_0$) and the strain hardening exponent \\($n$) are computed at a given temperature.
-Then the visualization is done for \\($\sigma_0$)-T and \\($n$)-T.
+Then the visualization is done for \\$\sigma_0$-T and \\$n$-T.
 """)
 
 # File upload
