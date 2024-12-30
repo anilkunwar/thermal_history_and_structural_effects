@@ -40,6 +40,35 @@ if uploaded_file:
         # Display the updated DataFrame
         st.write("Data with Averages:")
         st.write(data)
+
+        # Plot savg vs Temperature
+        fig_savg = go.Figure()
+        fig_savg.add_trace(go.Scatter(x=data["T(oC)"], y=data["savg"], mode="lines+markers", name=r"$s_{\text{avg}}$"))
+        fig_savg.update_layout(
+            title=r"Average Strength Coefficient ($s_{\text{avg}}$) vs. Temperature",
+            xaxis_title="Temperature (°C)",
+            yaxis_title=r"$s_{\text{avg}}$ (MPa)",
+            font=dict(size=16),
+        )
+
+        # Plot navg vs Temperature
+        fig_navg = go.Figure()
+        fig_navg.add_trace(go.Scatter(x=data["T(oC)"], y=data["navg"], mode="lines+markers", name=r"$n_{\text{avg}}$"))
+        fig_navg.update_layout(
+            title=r"Average Strain Hardening Exponent ($n_{\text{avg}}$) vs. Temperature",
+            xaxis_title="Temperature (°C)",
+            yaxis_title=r"$n_{\text{avg}}$",
+            font=dict(size=16),
+        )
+
+        # Update y-axis to display scientific notation
+        fig_savg.update_yaxes(exponentformat="e", showexponent="all")
+        fig_navg.update_yaxes(exponentformat="e", showexponent="all")
+
+        # Display the plots
+        st.plotly_chart(fig_savg, use_container_width=True)
+        st.plotly_chart(fig_navg, use_container_width=True)
+
         
         # Plot the results of statistical calculations
         fig_savg = px.line(data, x="T(oC)", y="savg", title="Average Strength Coefficient (\(s_{\text{avg}}\)) vs. Temperature",
