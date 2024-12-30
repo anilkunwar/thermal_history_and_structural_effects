@@ -42,30 +42,38 @@ if uploaded_file:
         st.write("Data with Averages:")
         st.write(data)
 
-        # Plot savg vs Temperature
+        # Create Plotly plot for savg
         fig_savg = go.Figure()
-        fig_savg.add_trace(go.Scatter(x=data["T(oC)"], y=data["savg"], mode="lines+markers", name=r"$s_{\text{avg}}$"))
-        fig_savg.update_layout(
-            title=r"Average Strength Coefficient (r'$\sigma_{\text{avg}}$') vs. Temperature",
-            xaxis_title="Temperature (°C)",
-            yaxis_title=r"$\sigma_{\text{avg}}$ (MPa)",
-            font=dict(size=16),
-        )
+        fig_savg.add_trace(go.Scatter(
+            x=data['T(oC)'],
+            y=data['savg'],
+            mode="lines+markers",
+            name=r'$\sigma_0$ (Average Strength Coefficient)'
+        ))
 
-        # Plot navg vs Temperature
+        # Create Plotly plot for navg
         fig_navg = go.Figure()
-        fig_navg.add_trace(go.Scatter(x=data["T(oC)"], y=data["navg"], mode="lines+markers", name=r"$n_{\text{avg}}$"))
-        fig_navg.update_layout(
-            title=r"Average Strain Hardening Exponent ($n_{\text{avg}}$) vs. Temperature",
-            xaxis_title="Temperature (°C)",
-            yaxis_title=r"$n_{\text{avg}}$",
-            font=dict(size=16),
+        fig_navg.add_trace(go.Scatter(
+            x=data['T(oC)'],
+            y=data['navg'],
+            mode="lines+markers",
+            name=r'$n$ (Average Strain Hardening Exponent)'
+        ))
+
+        # Update layout for the plots
+        fig_savg.update_layout(
+            title=r'$\sigma_0$ vs. Temperature (°C)',
+            xaxis_title=r'Temperature ($^\circ$C)',
+            yaxis_title=r'$\sigma_0$ (MPa)',
+            font=dict(size=16)
         )
 
-        # Update y-axis to display scientific notation
-        fig_savg.update_yaxes(exponentformat="e", showexponent="all")
-        fig_navg.update_yaxes(exponentformat="e", showexponent="all")
-
+        fig_navg.update_layout(
+            title=r'$n$ vs. Temperature (°C)',
+            xaxis_title=r'Temperature ($^\circ$C)',
+            yaxis_title=r'$n$',
+            font=dict(size=16)
+        )
         # Display the plots
         st.plotly_chart(fig_savg, use_container_width=True)
         st.plotly_chart(fig_navg, use_container_width=True)
