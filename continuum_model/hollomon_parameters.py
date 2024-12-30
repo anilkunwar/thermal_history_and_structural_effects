@@ -6,11 +6,6 @@ import plotly.graph_objects as go
 # Streamlit App
 st.title("Finding average values for data of Hollomon Parameters")
 
-# Load MathJax
-st.markdown("""
-    <script type="text/javascript" async 
-            src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-""", unsafe_allow_html=True)
 
 # Introduction to Hollomon Parameters
 st.markdown("""
