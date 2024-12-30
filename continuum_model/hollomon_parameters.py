@@ -24,6 +24,12 @@ After the experimental dataset is uploaded as a csv file, this app calculates th
 Then the visualization is done for $\sigma_0$-T and $n$-T.
 """)
 
+# Load MathJax
+st.markdown("""
+    <script type="text/javascript" async 
+            src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+""", unsafe_allow_html=True)
+
 # File upload
 uploaded_file = st.file_uploader("Upload your CSV file", type=["csv"])
 
