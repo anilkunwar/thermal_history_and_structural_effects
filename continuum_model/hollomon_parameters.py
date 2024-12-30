@@ -52,7 +52,7 @@ if uploaded_file:
             x=data['T(oC)'],
             y=data['savg'],
             mode="lines+markers",
-            name="σ\u2080 (Average Strength Coefficient)"  # Use Unicode for σ₀
+            name="\u03C3\u2080 (Average Strength Coefficient)"  # Use Unicode for σ₀
         ))
 
         # Create Plotly plot for navg
