@@ -48,6 +48,20 @@ if uploaded_file:
         st.write("Data with Averages:")
         st.write(data)
 
+        # Fit the data for savg vs. T
+        def linear_fit(x, a, b):
+            return a * x + b
+        
+        popt_savg, _ = curve_fit(linear_fit, data['T(oC)'], data['savg'])
+        fitted_savg = linear_fit(data['T(oC)'], *popt_savg)
+
+        # Fit the data for navg vs. T
+        def linear_fit_n(x, a, b):
+            return a * x + b
+        
+        popt_navg, _ = curve_fit(linear_fit_n, data['T(oC)'], data['navg'])
+        fitted_navg = linear_fit_n(data['T(oC)'], *popt_navg)
+
          # Create Plotly plot for savg
         fig_savg = go.Figure()
         fig_savg.add_trace(go.Scatter(
@@ -57,6 +71,14 @@ if uploaded_file:
             name="\u03C3\u2080 (Average Strength Coefficient)"  # Use Unicode for σ₀
         ))
 
+        # Add fitted line for savg
+        fig_savg.add_trace(go.Scatter(
+            x=data['T(oC)'],
+            y=fitted_savg,
+            mode="lines",
+            name="Fitted Line: " + r"$\sigma_0 = %.2f T + %.2f$" % tuple(popt_savg)
+        ))
+
         # Create Plotly plot for navg
         fig_navg = go.Figure()
         fig_navg.add_trace(go.Scatter(
@@ -64,6 +86,14 @@ if uploaded_file:
             y=data['navg'],
             mode="lines+markers",
             name="n (Average Strain Hardening Exponent)"  # Use Unicode for n
+        ))
+
+        # Add fitted line for navg
+        fig_navg.add_trace(go.Scatter(
+            x=data['T(oC)'],
+            y=fitted_navg,
+            mode="lines",
+            name="Fitted Line: " + r"$n = %.2f T + %.2f$" % tuple(popt_navg)
         ))
 
         # Update layout for the plots
