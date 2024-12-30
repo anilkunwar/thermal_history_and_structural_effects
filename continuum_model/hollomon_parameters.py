@@ -76,7 +76,7 @@ if uploaded_file:
             x=data['T(oC)'],
             y=fitted_savg,
             mode="lines",
-            name="Fitted Line: " + r"$\sigma_0 = %.2f T + %.2f$" % tuple(popt_savg)
+            name="Fitted Line: " + "\u03C3\u2080 = %.2f T + %.2f" % tuple(popt_savg)
         ))
 
         # Create Plotly plot for navg
@@ -93,7 +93,7 @@ if uploaded_file:
             x=data['T(oC)'],
             y=fitted_navg,
             mode="lines",
-            name="Fitted Line: " + r"$n = %.2f T + %.2f$" % tuple(popt_navg)
+            name="Fitted Line: " + "n = %.2f T + %.2f" % tuple(popt_navg)
         ))
 
         # Update layout for the plots
