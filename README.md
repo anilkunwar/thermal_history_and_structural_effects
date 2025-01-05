@@ -10,6 +10,7 @@
 
 # MD (Atomistic simulations)
 ...................
+a. a postprocessor to compute the unstable stacking fault energy and ideal shear strength from the GSFE-displacement data
 
 # postprocessing
 a. the temperature-time-vn.py constructs the temporal variation of Temperature of given points  at different vertical depths e.g. 0, 15 and 30 micrometer from the surface of a powder bed, when processed by laser in two scans (forward scan and return scan) at two input power values i.e. 250 W and 350 W. The scan speed for laser with P = 250 W is 1200 mm/s whereas that for laser with higher power is 800 mm/s. 
