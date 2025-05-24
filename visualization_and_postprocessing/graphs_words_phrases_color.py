@@ -105,7 +105,7 @@ KEYWORD_CATEGORIES = {
     "Other": [
         "sustainability", "industry 4.0", "optimization", "simulation", "modeling", "energy efficiency",
         "additive manufacturing", "sustainable manufacturing", "process-structure", "hierarchical microstructure",
-        "non-uniform temperature", "laser-material interaction", "melt boundary"
+        "non-uniform temperature", "laser-material interaction", "melt boundary", "processing parameters"
     ]
 }
 
