@@ -14,8 +14,8 @@ wordcloud, networks and radar charts for frequency and relevance metrices
 further efforts to enhance the visualization of word and phrase networks
 - Basic model
   [![meaningtowords](https://img.shields.io/badge/basicwordnetwork-streamlit-red)](https://basicvisualizationofwordphrasegraphs.streamlit.app/)
-- enhanced model
-
+- enhanced model 
+[![meaningtowords](https://img.shields.io/badge/enhancedwordnetwork-streamlit-red)](https://enhancedvisualizationofwordphrasegraphs.streamlit.app/)
 
 # Visualization of heat source for P = 250.0 W and 350.0 W. 
 [![Gaussian Heat Source via Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://gaussianheatsourcemodel.streamlit.app/)
