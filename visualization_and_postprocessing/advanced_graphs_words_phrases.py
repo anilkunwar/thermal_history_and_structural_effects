@@ -113,10 +113,55 @@ KEYWORD_CATEGORIES = {
 PHYSICS_CATEGORIES = ["Physical Phenomena", "Properties"]
 
 # Define available colormaps for visualizations
+#COLORMAPS = [
+#    "viridis", "plasma", "inferno", "magma", "hot",
+#    "coolwarm", "RdBu", "PiYG", "tab10", "Set2"
+#]
 COLORMAPS = [
-    "viridis", "plasma", "inferno", "magma", "hot",
-    "coolwarm", "RdBu", "PiYG", "tab10", "Set2"
+    # Perceptually Uniform Sequential
+    "viridis", "plasma", "inferno", "magma", "cividis",
+
+    # Sequential
+    "Greys", "Purples", "Blues", "Greens", "Oranges", "Reds",
+    "YlOrBr", "YlOrRd", "OrRd", "PuRd", "RdPu", "BuPu", "GnBu",
+    "PuBu", "YlGnBu", "PuBuGn", "BuGn", "YlGn",
+
+    # Sequential (2)
+    "cubehelix", "binary", "gist_yarg", "gist_gray", "gray", "bone",
+    "pink", "spring", "summer", "autumn", "winter",
+
+    # Diverging
+    "PiYG", "PRGn", "BrBG", "PuOr", "RdGy", "RdBu", "RdYlBu", "RdYlGn",
+    "Spectral", "coolwarm", "bwr", "seismic",
+
+    # Cyclic
+    "twilight", "twilight_shifted", "hsv",
+
+    # Qualitative
+    "Pastel1", "Pastel2", "Paired", "Accent", "Dark2", "Set1", "Set2", "Set3",
+    "tab10", "tab20", "tab20b", "tab20c",
+
+    # Miscellaneous
+    "flag", "prism", "ocean", "gist_earth", "terrain", "gist_stern", "gnuplot",
+    "gnuplot2", "CMRmap", "cubehelix", "brg", "gist_rainbow", "rainbow",
+    "jet", "nipy_spectral", "gist_ncar",
+
+    # Reversed versions
+    "viridis_r", "plasma_r", "inferno_r", "magma_r", "cividis_r", "Greys_r",
+    "Purples_r", "Blues_r", "Greens_r", "Oranges_r", "Reds_r", "YlOrBr_r",
+    "YlOrRd_r", "OrRd_r", "PuRd_r", "RdPu_r", "BuPu_r", "GnBu_r", "PuBu_r",
+    "YlGnBu_r", "PuBuGn_r", "BuGn_r", "YlGn_r", "twilight_r", "twilight_shifted_r",
+    "hsv_r", "Spectral_r", "coolwarm_r", "bwr_r", "seismic_r", "RdBu_r",
+    "PiYG_r", "PRGn_r", "BrBG_r", "PuOr_r", "RdGy_r", "RdYlBu_r", "RdYlGn_r",
+
+    # Optional: If using `colorcet` or `cmocean`
+    # (uncomment if these libraries are installed)
+    # "cet_fire", "cet_ice", "cet_rainbow", "cet_colorwheel",
+    # "cmo.haline", "cmo.thermal", "cmo.solar", "cmo.ice", "cmo.gray",
+    # "cmo.matter", "cmo.turbid", "cmo.speed", "cmo.deep", "cmo.delta",
+    # "cmo.amp", "cmo.phase", "cmo.balance", "cmo.diff", "cmo.curl", "cmo.tarn"
 ]
+
 
 # Set page configuration
 st.set_page_config(page_title="PDF Text Extractor & Visualization for Additive Manufacturing", layout="wide")
