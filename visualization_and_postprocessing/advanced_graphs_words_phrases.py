@@ -733,5 +733,5 @@ if uploaded_file:
                         )
 
 # Footer
-st.markdown("---")
-st.markdown("Built with Streamlit, PyPDF2, WordCloud, NetworkX, NLTK, spaCy, Matplotlib, and Seaborn for additive manufacturing research.")
+st.markdown("Wordclouds, Networks and Radarcharts for the Study of the Meaning of the Words used in the Scientific Research")
+st.markdown("Philology in Additive Manufacturing.")
