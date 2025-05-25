@@ -57,11 +57,13 @@ if not download_nltk_data():
 
 # Load IDF_APPROX from JSON or use hardcoded fallback
 try:
-    with open("idf_approx.json", "r") as f:
+    json_path = os.path.join(os.path.dirname(__file__), "idf_approx.json")
+    with open(json_path, "r") as f:
         IDF_APPROX = json.load(f)
     logger.info("Loaded arXiv-derived IDF_APPROX from idf_approx.json")
-except FileNotFoundError:
-    logger.warning("idf_approx.json not found, using default IDF_APPROX")
+except (FileNotFoundError, json.JSONDecodeError, OSError) as e:
+    logger.warning(f"Failed to load idf_approx.json from {json_path}: {str(e)}. Using default IDF_APPROX.")
+    st.warning(f"Could not load idf_approx.json: {str(e)}. Falling back to hardcoded IDF values. Please ensure idf_approx.json is in the same directory as the script.")
     IDF_APPROX = {
         "study": log(1000 / 800), "analysis": log(1000 / 700), "results": log(1000 / 600),
         "method": log(1000 / 500), "experiment": log(1000 / 400),
