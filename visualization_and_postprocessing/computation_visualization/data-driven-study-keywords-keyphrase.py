@@ -63,7 +63,7 @@ try:
     logger.info("Loaded arXiv-derived IDF_APPROX from idf_approx.json")
 except (FileNotFoundError, json.JSONDecodeError, OSError) as e:
     logger.warning(f"Failed to load idf_approx.json from {json_path}: {str(e)}. Using default IDF_APPROX.")
-    st.warning(f"Could not load idf_approx.json: {str(e)}. Falling back to hardcoded IDF values. Please ensure idf_approx.json is in the same directory as the script.")
+    st.warning(f"Could not load idf_approx.json: {str(e)}. Falling back to hardcoded IDF values. Please ensure idf_approx.json is in the same directory as the script in the GitHub repository.")
     IDF_APPROX = {
         "study": log(1000 / 800), "analysis": log(1000 / 700), "results": log(1000 / 600),
         "method": log(1000 / 500), "experiment": log(1000 / 400),
@@ -1081,4 +1081,3 @@ if uploaded_file:
 # Footer
 st.markdown("---")
 st.markdown("Built with Streamlit, PyPDF2, WordCloud, NetworkX, NLTK, spaCy, Matplotlib, and Seaborn for additive manufacturing research.")
-
