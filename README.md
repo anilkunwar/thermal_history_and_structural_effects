@@ -4,7 +4,13 @@
 ...................
 
 # Meanings and Inferences from Words and Phrases of Additive Manufacturing (Attention Mechanism and Statistical Approach)
+
+wordcloud and networks of words
 [![meaningtowords](https://img.shields.io/badge/WordPhraseGraphs-streamlit-red)](https://visualizationofwordsphrases.streamlit.app/)
+
+wordcloud, networks and radar charts for frequency and relevance metrices
+[![meaningtowords](https://img.shields.io/badge/AdvancedWordPhraseGraphs-streamlit-red)](https://advancedgraphswordsphrases.streamlit.app/)
+
 
 # Visualization of heat source for P = 250.0 W and 350.0 W. 
 [![Gaussian Heat Source via Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://gaussianheatsourcemodel.streamlit.app/)
