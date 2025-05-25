@@ -435,7 +435,8 @@ def generate_word_cloud(text, selected_keywords, tfidf_scores, selection_criteri
             0.5, 0.05, caption, ha="center", fontsize=caption_font_size, wrap=True,
             bbox=dict(facecolor='white', edgecolor='black', boxstyle='round,pad=0.5')
         )
-        plt.tight_layout(rect=[0, 0.15, 1, 1])
+        #plt.tight_layout(rect=[0, 0.15, 1, 1])
+        plt.tight_layout(rect=[0, 0.25, 1, 1])
         return fig, None
     except Exception as e:
         logger.error(f"Error generating word cloud: {str(e)}")
