@@ -24,6 +24,9 @@ computation of the inverse document frequency of a single "word" or a "single ph
 
 (display of tf, idf and tf-idf) computation of the inverse document frequency of a single "word" or a "single phrase" using the data information available in arxiv database
 [![meaningtowords](https://img.shields.io/badge/computetfidf-streamlit-red)](https://advancedsingletermtfidfcomputation.streamlit.app/)
+
+(display of tf, idf ,tf-idf and queried documents count) computation of the inverse document frequency of a single "word" or a "single phrase" using the data information available in arxiv database
+[![meaningtowords](https://img.shields.io/badge/computetfidffromndoc-streamlit-red)](https://https://advancedsingletermtfidfcomputefromdocuments.streamlit.app/)
  
 
 graphs of words and phrases using information of tf-idf from documents of arxiv database
