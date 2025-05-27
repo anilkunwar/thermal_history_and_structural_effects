@@ -22,6 +22,10 @@ quantifying the words and phrases from data-driven study
 computation of the inverse document frequency of a single "word" or a "single phrase" using the data information available in arxiv database
 [![meaningtowords](https://img.shields.io/badge/computeidf-streamlit-red)](https://singlewordphraseidfcomputation.streamlit.app/)
 
+(display of tf, idf and tf-idf) computation of the inverse document frequency of a single "word" or a "single phrase" using the data information available in arxiv database
+[![meaningtowords](https://img.shields.io/badge/computetfidf-streamlit-red)](https://advancedsingletermtfidfcomputation.streamlit.app/)
+ 
+
 graphs of words and phrases using information of tf-idf from documents of arxiv database
 [![meaningtowords](https://img.shields.io/badge/visualizewordsphrases-streamlit-red)](https://datadrivenstudyofwordsphrases.streamlit.app/)
 
