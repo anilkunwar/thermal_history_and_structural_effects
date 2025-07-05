@@ -25,7 +25,7 @@ logging.basicConfig(filename='sfe_ner_analysis.log', level=logging.DEBUG)
 
 # Initialize Streamlit app
 st.set_page_config(page_title="SFE NER Analysis Tool", layout="wide")
-st.title("Stacking Fault Energy (SFE) Analysis for Al-based and Multicomponent Alloys")
+st.title("Stacking Fault Energy (SFE) Analysis for Al-based and Other Multicomponent Alloys")
 st.markdown("""
 This tool extracts stacking fault energy (SFE in mJ/m²) and temperature (°C or K) from scientific papers stored in `sfe_knowledgeuniverse.db` or saved NER results in `.pkl` files. It uses regex-based NER with SpaCy for material detection and Pointwise Mutual Information (PMI) to identify significant phrases like "stacking fault." Use the **NER Analysis** tab to process the database or a `.pkl` file, and the **Visualize Results** tab to load and visualize existing results with customizable, publication-quality Matplotlib plots.
 """)
