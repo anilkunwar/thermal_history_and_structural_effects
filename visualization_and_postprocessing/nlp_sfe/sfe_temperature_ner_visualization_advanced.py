@@ -320,7 +320,7 @@ def visualize_results(df, entity_types, pmi_results):
         'axes.linewidth': axes_thickness,
         'xtick.major.width': axes_thickness,
         'ytick.major.width': axes_thickness,
-        'text.usetex': True
+        'text.usetex': False #True
     })
     
     st.subheader("Extracted Parameters")
