@@ -36,6 +36,9 @@ computation of the inverse document frequency of a single "word" or a "single ph
 graphs of words and phrases using information of tf-idf from documents of arxiv database
 [![meaningtowords](https://img.shields.io/badge/visualizewordsphrases-streamlit-red)](https://datadrivenstudyofwordsphrases.streamlit.app/)
 
+Named Entity Recognition for Stacking Fault Energy of Alloys (using regex, PMI):
+[![meaningtowords](https://img.shields.io/badge/sfeInformation-streamlit-red)](https://sfe-from-alloyinformatics.streamlit.app/)
+
 
 # Visualization of heat source for P = 250.0 W and 350.0 W. 
 [![Gaussian Heat Source via Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://gaussianheatsourcemodel.streamlit.app/)
