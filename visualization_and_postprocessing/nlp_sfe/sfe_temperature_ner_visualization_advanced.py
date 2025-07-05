@@ -521,13 +521,21 @@ def visualize_results(df, entity_types, pmi_results):
             ax.grid(True, alpha=0.3)
             plt.tight_layout()
             st.pyplot(fig)
+            temp_centers = 0.5 * (xedges[:-1] + xedges[1:])
+            sfe_centers = 0.5 * (yedges[:-1] + yedges[1:])
+            temp_grid, sfe_grid = np.meshgrid(temp_centers, sfe_centers)
             heatmap_df = pd.DataFrame({
-                'Temp_Lower': xedges[:-1],
-                'Temp_Upper': xedges[1:],
-                'SFE_Lower': yedges[:-1],
-                'SFE_Upper': yedges[1:],
-                'Count': heatmap.T.flatten()
+                    "Temperature (°C)": temp_grid.flatten(),
+                    "SFE (mJ/m²)": sfe_grid.flatten(),
+                    "Count": heatmap.T.flatten()
             })
+            #heatmap_df = pd.DataFrame({
+            #    'Temp_Lower': xedges[:-1],
+            #    'Temp_Upper': xedges[1:],
+            #    'SFE_Lower': yedges[:-1],
+            #    'SFE_Upper': yedges[1:],
+            #    'Count': heatmap.T.flatten()
+            #})
             st.download_button(
                 label="Download Heatmap Data CSV",
                 data=heatmap_df.to_csv(index=False),
