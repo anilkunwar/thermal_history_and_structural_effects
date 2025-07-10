@@ -76,7 +76,7 @@ with col1:
 
     
     scan_speed_input = st.number_input(
-        label="Scanning Speed $v_{\\text{scan}}$ (mm/s)",
+        label="Scanning Speed ($v_{\\text{scan}}$ mm/s)",
         min_value=500.0,
         max_value=1500.0,
         value=st.session_state.scan_speed,
@@ -86,7 +86,7 @@ with col1:
     )
     st.session_state.scan_speed = scan_speed_input
     scan_speed = st.slider(
-        label="Scanning Speed (mm/s)",
+        label="Scanning Speed ($v_{\\text{scan}}$ mm/s)",
         min_value=500.0,
         max_value=1500.0,
         value=st.session_state.scan_speed,
@@ -97,7 +97,7 @@ with col1:
     st.session_state.scan_speed = scan_speed
 
     hatch_spacing_input = st.number_input(
-        "Hatch Spacing (lₕ, μm)",
+        "Hatch Spacing ($l_{\\text{h}}$, μm)",
         min_value=10.0,
         max_value=200.0,
         value=st.session_state.hatch_spacing,
@@ -107,7 +107,7 @@ with col1:
     )
     st.session_state.hatch_spacing = hatch_spacing_input
     hatch_spacing = st.slider(
-        "Hatch Spacing Slider (lₕ, μm)",
+        "Hatch Spacing Slider ($l_{\\text{h}}$, μm)",
         min_value=10.0,
         max_value=200.0,
         value=st.session_state.hatch_spacing,
@@ -118,7 +118,7 @@ with col1:
     st.session_state.hatch_spacing = hatch_spacing
 
     layer_thickness_input = st.number_input(
-        "Layer Thickness ((lₜ, μm))",
+        "Layer Thickness (($l_{\\text{t}}$, μm))",
         min_value=10.0,
         max_value=100.0,
         value=st.session_state.layer_thickness,
@@ -128,7 +128,7 @@ with col1:
     )
     st.session_state.layer_thickness = layer_thickness_input
     layer_thickness = st.slider(
-        "Layer Thickness Slider ((lₜ, μm))",
+        "Layer Thickness Slider (($l_{\\text{t}}$, μm))",
         min_value=10.0,
         max_value=100.0,
         value=st.session_state.layer_thickness,
