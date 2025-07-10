@@ -75,9 +75,7 @@ with col1:
     st.session_state.laser_power = laser_power
 
     scan_speed_input = st.number_input(
-        st.markdown(r"""
-<div class="formula">**Scanning Speed Slider:** \( V_{\text{scan}} \) (mm/s)</div>
-""", unsafe_allow_html=True),
+        st.markdown("**Scanning Speed Slider:** $V_{\\text{scan}}$ (mm/s)"),
         min_value=500.0,
         max_value=1500.0,
         value=st.session_state.scan_speed,
@@ -87,9 +85,7 @@ with col1:
     )
     st.session_state.scan_speed = scan_speed_input
     scan_speed = st.slider(
-        st.markdown(r"""
-<div class="formula">**Scanning Speed Slider:** \( V_{\text{scan}} \) (mm/s)</div>
-""", unsafe_allow_html=True),
+        st.markdown("**Scanning Speed Slider:** $V_{\\text{scan}}$ (mm/s)"),
         min_value=500.0,
         max_value=1500.0,
         value=st.session_state.scan_speed,
