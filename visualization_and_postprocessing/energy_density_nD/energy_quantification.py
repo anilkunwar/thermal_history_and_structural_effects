@@ -75,7 +75,9 @@ with col1:
     st.session_state.laser_power = laser_power
 
     scan_speed_input = st.number_input(
-        "Scanning Speed (v_scan, mm/s)",
+        st.markdown(r"""
+<div class="formula">**Scanning Speed Slider:** \( V_{\text{scan}} \) (mm/s)</div>
+""", unsafe_allow_html=True),
         min_value=500.0,
         max_value=1500.0,
         value=st.session_state.scan_speed,
@@ -85,7 +87,9 @@ with col1:
     )
     st.session_state.scan_speed = scan_speed_input
     scan_speed = st.slider(
-        "Scanning Speed Slider (v_scan, mm/s)",
+        st.markdown(r"""
+<div class="formula">**Scanning Speed Slider:** \( V_{\text{scan}} \) (mm/s)</div>
+""", unsafe_allow_html=True),
         min_value=500.0,
         max_value=1500.0,
         value=st.session_state.scan_speed,
@@ -96,7 +100,7 @@ with col1:
     st.session_state.scan_speed = scan_speed
 
     hatch_spacing_input = st.number_input(
-        "Hatch Spacing (l_h, μm)",
+        "Hatch Spacing (lₕ, μm)",
         min_value=10.0,
         max_value=200.0,
         value=st.session_state.hatch_spacing,
@@ -106,7 +110,7 @@ with col1:
     )
     st.session_state.hatch_spacing = hatch_spacing_input
     hatch_spacing = st.slider(
-        "Hatch Spacing Slider (l_h, μm)",
+        "Hatch Spacing Slider (lₕ, μm)",
         min_value=10.0,
         max_value=200.0,
         value=st.session_state.hatch_spacing,
