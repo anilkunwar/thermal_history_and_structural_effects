@@ -34,6 +34,7 @@ st.markdown("""
 # Title
 st.markdown('<div class="header">Laser Energy Density Calculator</div>', unsafe_allow_html=True)
 st.markdown("Calculate **Linear Energy Density (LED)**, **Areal Energy Density (AED)**, and **Volumetric Energy Density (VED)** for laser processing.")
+st.markdown("How to use the Dual input interface conveniently: Change in "input box" automatically updates the slider, The change in "slider" has to be followed by an attempt to retreat and the input in box gets updated.")
 
 # Layout
 col1, col2 = st.columns(2)
