@@ -76,6 +76,7 @@ with col1:
 
     scan_speed_input = st.number_input(
         st.markdown("**Scanning Speed Slider:** $V_{\\text{scan}}$ (mm/s)"),
+        label="",  # Empty label to avoid conflict
         min_value=500.0,
         max_value=1500.0,
         value=st.session_state.scan_speed,
@@ -86,6 +87,7 @@ with col1:
     st.session_state.scan_speed = scan_speed_input
     scan_speed = st.slider(
         st.markdown("**Scanning Speed Slider:** $V_{\\text{scan}}$ (mm/s)"),
+        label="",  # Empty label to avoid conflict
         min_value=500.0,
         max_value=1500.0,
         value=st.session_state.scan_speed,
