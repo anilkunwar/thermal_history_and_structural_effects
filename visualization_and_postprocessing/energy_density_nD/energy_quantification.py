@@ -5,7 +5,7 @@ import numpy as np
 # Set page configuration for a modern look
 st.set_page_config(page_title="Energy Density Calculator", layout="wide", page_icon="⚡️")
 
-# Custom CSS for styling
+# Custom CSS for styling and MathJax for high-quality LaTeX rendering
 st.markdown("""
     <style>
     .main {background-color: #f5f7fa;}
@@ -15,8 +15,19 @@ st.markdown("""
     .metric-card {background-color: #ffffff; padding: 20px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); margin-bottom: 15px;}
     .header {font-size: 2.5em; color: #2c3e50; text-align: center; margin-bottom: 20px;}
     .subheader {font-size: 1.5em; color: #34495e; margin-top: 20px;}
-    .formula {font-size: 1.2em; color: #2c3e50; margin-top: 10px;}
+    .formula {font-size: 1.2em; color: #2c3e50; margin-top: 10px; display: inline;}
+    .value {font-size: 1.2em; color: #2c3e50; margin-left: 10px; display: inline;}
     </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [['$', '$'], ['\\(', '\\)']],
+            displayMath: [['$$', '$$'], ['\\[', '\\]']],
+            processEscapes: true
+        }
+    });
+    </script>
 """, unsafe_allow_html=True)
 
 # Title
@@ -132,13 +143,12 @@ with col2:
     aed = laser_power / (scan_speed * (hatch_spacing / 1000))  # AED = P_l / (v_scan * l_h) (J/mm²)
     ved = laser_power / (scan_speed * (hatch_spacing / 1000) * (layer_thickness / 1000))  # VED = P_l / (v_scan * l_h * l_t) (J/mm³)
     
-    # Display formulas and results in styled metric cards
+    # Display formulas and numerical values in styled metric cards
     st.markdown(
         f"""
         <div class="metric-card">
             <b>Linear Energy Density (LED):</b><br>
-            <div class="formula">Formula: $$ \\text{{LED}} = \\frac{{P_l}}{{v_{{scan}}}} $$</div>
-            <b>Value:</b> {led:.2f} J/mm
+            <span class="formula">$ \\text{{LED}} = \\frac{{P_l}}{{v_{{\\text{{scan}}}}}} = \\frac{{{laser_power:.1f}}}{{{scan_speed:.1f}}} \\approx {led:.2f} \\, \\text{{J/mm}}$</span>
         </div>
         """,
         unsafe_allow_html=True
@@ -147,8 +157,7 @@ with col2:
         f"""
         <div class="metric-card">
             <b>Areal Energy Density (AED):</b><br>
-            <div class="formula">Formula: $$ \\text{{AED}} = \\frac{{P_l}}{{v_{{scan}} \\times l_h}} $$</div>
-            <b>Value:</b> {aed:.2f} J/mm²
+            <span class="formula">$ \\text{{AED}} = \\frac{{P_l}}{{v_{{\\text{{scan}}}} \\times l_h}} = \\frac{{{laser_power:.1f}}}{{{scan_speed:.1f} \\times {hatch_spacing/1000:.4f}}} \\approx {aed:.2f} \\, \\text{{J/mm}}^2$</span>
         </div>
         """,
         unsafe_allow_html=True
@@ -157,8 +166,7 @@ with col2:
         f"""
         <div class="metric-card">
             <b>Volumetric Energy Density (VED):</b><br>
-            <div class="formula">Formula: $$ \\text{{VED}} = \\frac{{P_l}}{{v_{{scan}} \\times l_h \\times l_t}} $$</div>
-            <b>Value:</b> {ved:.2f} J/mm³
+            <span class="formula">$ \\text{{VED}} = \\frac{{P_l}}{{v_{{\\text{{scan}}}} \\times l_h \\times l_t}} = \\frac{{{laser_power:.1f}}}{{{scan_speed:.1f} \\times {hatch_spacing/1000:.4f} \\times {layer_thickness/1000:.4f}}} \\approx {ved:.2f} \\, \\text{{J/mm}}^3$</span>
         </div>
         """,
         unsafe_allow_html=True
@@ -173,7 +181,7 @@ scan_speeds = np.linspace(500, 1500, 100)
 laser_powers = [250, 350]  # Default powers from the text
 led_data = {f"{p} W": p / scan_speeds for p in laser_powers}
 aed_data = {f"{p} W": p / (scan_speeds * (hatch_spacing / 1000)) for p in laser_powers}
-ved_data = {f"{p} W": p / (scan_speeds * (hatch_spacing / 1000) * (layer_thickness / 1000)) for p in laser_powers}
+ved坐下 = {f"{p} W": p / (scan_speeds * (hatch_spacing / 1000) * (layer_thickness / 1000)) for p in laser_powers}
 
 # Create Plotly figure
 fig = go.Figure()
