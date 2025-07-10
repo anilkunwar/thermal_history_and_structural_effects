@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 import io
 
 # Set page configuration
-st.set_page_config(page_title="AED vs d^max_MPB Plotter", layout="wide", page_icon="📊")
+st.set_page_config(page_title="AED vs Depth of Meltpool", layout="wide", page_icon="📊")
 
 # Custom CSS styling and MathJax for LaTeX rendering in Plotly and markdown
 st.markdown("""
