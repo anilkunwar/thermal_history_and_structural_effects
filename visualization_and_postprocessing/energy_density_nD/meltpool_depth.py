@@ -226,4 +226,4 @@ st.markdown(fr"$\text{{Coefficients: }} a = {coeffs[0]:.4f}, b = {coeffs[1]:.4f}
 
 # Footer
 st.markdown("---")
-st.markdown("Data based on AED and d$^\\text{max_MPB}$ measurements for AlSiMg1.4Zr alloy.")
+st.markdown("Data based on AED and meltpool depth measurements for AlSiMg1.4Zr alloy.")
