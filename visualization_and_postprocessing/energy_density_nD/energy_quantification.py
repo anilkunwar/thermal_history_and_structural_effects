@@ -19,7 +19,7 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # Title
-st.markdown('<div class="header">Laser Energy Density Calculator</div>', unsafe_allow_html=True)
+st.markdown('<div class="header">Laser Energy Density  Calculator</div>', unsafe_allow_html=True)
 st.markdown("Calculate **Linear Energy Density (LED)**, **Areal Energy Density (AED)**, and **Volumetric Energy Density (VED)** for laser processing.")
 
 # Layout with columns for inputs and results
