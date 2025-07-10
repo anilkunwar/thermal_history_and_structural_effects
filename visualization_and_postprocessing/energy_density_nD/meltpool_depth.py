@@ -74,7 +74,7 @@ with col1:
     st.markdown('<div class="subheader">Plotly LaTeX Labels (use \\ for MathJax)</div>', unsafe_allow_html=True)
     plotly_title = st.text_input("Plotly Plot Title (LaTeX)", r"$\text{Effect of AED on } d^{\text{max}}_{\text{MPB}}$", help="Enter title with LaTeX, e.g., $\\text{Effect of AED on } d^{\\text{max}}_{\\text{MPB}}$")
     plotly_x_label = st.text_input("Plotly X-Axis Label (LaTeX)", r"$\text{AED (J/mm}^2\text{)}$", help="Enter x-axis label with LaTeX, e.g., $\\text{AED (J/mm}^2\\text{)}$")
-    plotly_y_label = st.text_input("Plotly Y-Axis Label (LaTeX)", r"$d^{\text{max}}_{\text{MPB}}$ ($\mu\text{m}$)", help="Enter y-axis label with LaTeX, e.g., $d^{\\text{max}}_{\\text{MPB}}$ ($\mu\\text{m}$)")
+    plotly_y_label = st.text_input("Plotly Y-Axis Label (LaTeX)", r"$d^{\text{max}}_{\text{MPB}} (\mu\text{m})$", help="Enter y-axis label with LaTeX, e.g., $d^{\\text{max}}_{\\text{MPB}} (\\mu\\text{m})$")
     plotly_point_label = st.text_input("Plotly Data Points Legend (LaTeX)", r"$\text{Data Points}$", help="Enter legend label for points with LaTeX")
     plotly_curve_label = st.text_input("Plotly Fitted Curve Legend (LaTeX)", r"$\text{Quadratic Fit}$", help="Enter legend label for curve with LaTeX (e.g., $\\text{Quadratic Fit}$)")
     
@@ -90,7 +90,7 @@ with col1:
     st.markdown(f'<div class="subheader">Matplotlib Labels {"(use single \\ for LaTeX if available, else plain text)" if not latex_available else "(use single \\ for LaTeX)"}</div>', unsafe_allow_html=True)
     mpl_title = st.text_input("Matplotlib Plot Title", r"$\text{Effect of AED on } d^\text{max}_\text{MPB}$" if latex_available else "Effect of AED on d_max_MPB", help="Enter title with LaTeX (e.g., $d^\text{max}_\text{MPB}$) if LaTeX is available, else plain text")
     mpl_x_label = st.text_input("Matplotlib X-Axis Label", r"$\text{AED (J/mm}^2\text{)}$" if latex_available else "AED (J/mm²)", help="Enter x-axis label with LaTeX (e.g., $\text{AED (J/mm}^2\text{)}$) if LaTeX is available, else plain text")
-    mpl_y_label = st.text_input("Matplotlib Y-Axis Label", r"$d^\text{max}_\text{MPB}$ ($\mu\text{m}$)" if latex_available else "d_max_MPB (μm)", help="Enter y-axis label with LaTeX (e.g., $d^\text{max}_\text{MPB}$ ($\mu\text{m}$)) if LaTeX is available, else plain text")
+    mpl_y_label = st.text_input("Matplotlib Y-Axis Label", r"$d^\text{max}_\text{MPB} (\mu\text{m})$" if latex_available else "d_max_MPB (μm)", help="Enter y-axis label with LaTeX (e.g., $d^\text{max}_\text{MPB} (\mu\text{m})$) if LaTeX is available, else plain text")
     mpl_point_label = st.text_input("Matplotlib Data Points Legend", r"$\text{Data Points}$" if latex_available else "Data Points", help="Enter legend label for points with LaTeX if LaTeX is available, else plain text")
     mpl_curve_label = st.text_input("Matplotlib Fitted Curve Legend", r"$\text{Quadratic Fit}$" if latex_available else "Quadratic Fit", help="Enter legend label for curve with LaTeX if LaTeX is available, else plain text")
     
@@ -139,7 +139,7 @@ with col2:
         x=aed_fit,
         y=dmax_fit,
         mode="lines",
-        name=f"{plotly_curve_label}",
+        name=plotly_curve_label,
         line=dict(color=curve_color, width=curve_thickness),
     ))
     
@@ -148,51 +148,53 @@ with col2:
                          "bottom-left": (0.01, 0.01), "bottom-right": (0.99, 0.01)}[legend_location]
     
     # Update Plotly layout
-    fig_plotly.update_layout(
-        title=dict(text=plotly_title, x=0.5, xanchor="center", font=dict(size=axis_label_font_size)),
-        xaxis=dict(
-            title=plotly_x_label,
-            titlefont=dict(size=axis_label_font_size),
-            tickfont=dict(size=tick_label_font_size),
-            linecolor="black",
-            linewidth=axis_line_thickness,
-            mirror=True,
-            ticks="outside",
-            ticklen=tick_length,
-            tickwidth=tick_width,
-            showline=True,
-            gridcolor="lightgrey"
-        ),
-        yaxis=dict(
-            title=plotly_y_label,
-            titlefont=dict(size=axis_label_font_size),
-            tickfont=dict(size=tick_label_font_size),
-            linecolor="black",
-            linewidth=axis_line_thickness,
-            mirror=True,
-            ticks="outside",
-            ticklen=tick_length,
-            tickwidth=tick_width,
-            showline=True,
-            gridcolor="lightgrey"
-        ),
-        width=fig_width,
-        height=fig_height,
-        template="plotly_white",
-        font=dict(size=14),
-        legend=dict(
-            x=legend_x,
-            y=legend_y,
-            xanchor="right" if "right" in legend_location else "left",
-            yanchor="top" if "top" in legend_location else "bottom",
-            font=dict(size=legend_font_size),
-            bgcolor="rgba(255, 255, 255, 0.8)",
-            bordercolor="Black",
-            borderwidth=1
-        ),
-        plot_bgcolor="white",
-        paper_bgcolor="white"
-    )
+    try:
+        fig_plotly.update_layout(
+            title=dict(text=plotly_title, x=0.5, xanchor="center", font=dict(size=axis_label_font_size)),
+            xaxis=dict(
+                title=dict(text=plotly_x_label, font=dict(size=axis_label_font_size)),
+                tickfont=dict(size=tick_label_font_size),
+                linecolor="black",
+                linewidth=axis_line_thickness,
+                mirror=True,
+                ticks="outside",
+                ticklen=tick_length,
+                tickwidth=tick_width,
+                showline=True,
+                gridcolor="lightgrey"
+            ),
+            yaxis=dict(
+                title=dict(text=plotly_y_label, font=dict(size=axis_label_font_size)),
+                tickfont=dict(size=tick_label_font_size),
+                linecolor="black",
+                linewidth=axis_line_thickness,
+                mirror=True,
+                ticks="outside",
+                ticklen=tick_length,
+                tickwidth=tick_width,
+                showline=True,
+                gridcolor="lightgrey"
+            ),
+            width=fig_width,
+            height=fig_height,
+            template="plotly_white",
+            font=dict(size=14),
+            legend=dict(
+                x=legend_x,
+                y=legend_y,
+                xanchor="right" if "right" in legend_location else "left",
+                yanchor="top" if "top" in legend_location else "bottom",
+                font=dict(size=legend_font_size),
+                bgcolor="rgba(255, 255, 255, 0.8)",
+                bordercolor="Black",
+                borderwidth=1
+            ),
+            plot_bgcolor="white",
+            paper_bgcolor="white"
+        )
+    except ValueError as e:
+        st.error(f"Error in Plotly layout: {str(e)}. Ensure LaTeX labels use valid MathJax syntax (e.g., double backslashes like \\text{{}}).")
+        st.stop()
     
     st.plotly_chart(fig_plotly, use_container_width=False)
     
@@ -207,7 +209,7 @@ with col2:
     
     # Fitted curve
     ax.plot(aed_fit, dmax_fit, c=curve_color, linewidth=curve_thickness, 
-            label=f"{mpl_curve_label}")
+            label=mpl_curve_label)
     
     # Configure Matplotlib plot
     ax.set_title(mpl_title, fontsize=axis_label_font_size, pad=15)
@@ -229,10 +231,14 @@ with col2:
               frameon=True, facecolor='white', edgecolor='black')
     
     # Save Matplotlib figure to a buffer
-    buf = io.BytesIO()
-    fig_mpl.savefig(buf, format="png", bbox_inches="tight", dpi=300)
-    buf.seek(0)
-    st.image(buf, use_column_width=False, width=fig_width)
+    try:
+        buf = io.BytesIO()
+        fig_mpl.savefig(buf, format="png", bbox_inches="tight", dpi=300)
+        buf.seek(0)
+        st.image(buf, use_column_width=False, width=fig_width)
+    except Exception as e:
+        st.error(f"Error rendering Matplotlib plot: {str(e)}. Check LaTeX syntax or ensure LaTeX is installed.")
+        st.stop()
     
     plt.close(fig_mpl)
 
