@@ -209,5 +209,5 @@ st.plotly_chart(fig, use_container_width=True)
 # Footer
 st.markdown("---")
 st.markdown("Data based on AlSiMg1.4Zr alloy laser processing parameters.")
-st.markdown("How to Cite this Work: X. Wang, Y. Geng, Y. Oliinyk, Z. Zhang, A. Kunwar, Multiscale Computation and Experimental Insights into Thermal
+st.markdown("How to Cite this Work- X. Wang, Y. Geng, Y. Oliinyk, Z. Zhang, A. Kunwar, Multiscale Computation and Experimental Insights into Thermal
 History and Composition based Study of Strength-Ductility Synergy in Zr-Enhanced AlSiMg Alloys , 2025")
