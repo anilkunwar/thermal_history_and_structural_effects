@@ -46,6 +46,10 @@ Named Entity Recognition for Stacking Fault Energy of Alloys (using regex, PMI):
 # Visualization of T-dependence of Hollomon parameters. 
 [![Hollomon parameters via Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://hollomonparameters.streamlit.app/)
 
+# Calculation of Linear , Area and Volumetric Energy Density
+[![meaningtowords](https://img.shields.io/badge/laserenergydensity-streamlit-red)](https://energydensity1d2d3d.streamlit.app/)
+
+
 # MD (Atomistic simulations)
 ...................
 
