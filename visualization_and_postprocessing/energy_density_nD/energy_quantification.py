@@ -5,7 +5,7 @@ import numpy as np
 # Set page configuration
 st.set_page_config(page_title="Energy Density Calculator", layout="wide", page_icon="⚡️")
 
-# Custom CSS styling
+# Custom CSS styling and MathJax for high-quality LaTeX rendering
 st.markdown("""
     <style>
     .main {background-color: #f5f7fa;}
@@ -16,7 +16,19 @@ st.markdown("""
     .subheader {font-size: 1.5em; color: #34495e; margin-top: 20px;}
     .metric-card {background-color: #ffffff; padding: 20px; border-radius: 10px;
                   box-shadow: 0 4px 8px rgba(0,0,0,0.1); margin-bottom: 15px;}
+    .formula {font-size: 1.2em; color: #2c3e50; margin-top: 10px; display: inline;}
+    .value {font-size: 1.2em; color: #2c3e50; margin-left: 10px; display: inline;}
     </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [['$', '$'], ['\\(', '\\)']],
+            displayMath: [['$$', '$$'], ['\\[', '\\]']],
+            processEscapes: true
+        }
+    });
+    </script>
 """, unsafe_allow_html=True)
 
 # Title
@@ -39,15 +51,89 @@ with col1:
     if 'layer_thickness' not in st.session_state:
         st.session_state.layer_thickness = 30.0
 
-    laser_power = st.slider("Laser Power (Pₗ, W)", 100.0, 500.0, st.session_state.laser_power, step=10.0)
-    scan_speed = st.slider("Scan Speed (vₛₐₙ, mm/s)", 500.0, 1500.0, st.session_state.scan_speed, step=10.0)
-    hatch_spacing = st.slider("Hatch Spacing (lₕ, μm)", 10.0, 200.0, st.session_state.hatch_spacing, step=5.0)
-    layer_thickness = st.slider("Layer Thickness (lₜ, μm)", 10.0, 100.0, st.session_state.layer_thickness, step=5.0)
-
-    # Update state
+    # Input boxes and sliders
+    laser_power_input = st.number_input(
+        "Laser Power (P_l, W)",
+        min_value=100.0,
+        max_value=500.0,
+        value=st.session_state.laser_power,
+        step=10.0,
+        key="laser_power_input",
+        help="Laser power in watts (default: 250 W)"
+    )
+    st.session_state.laser_power = laser_power_input
+    laser_power = st.slider(
+        "Laser Power Slider (P_l, W)",
+        min_value=100.0,
+        max_value=500.0,
+        value=st.session_state.laser_power,
+        step=10.0,
+        key="laser_power_slider",
+        help="Adjust laser power"
+    )
     st.session_state.laser_power = laser_power
+
+    scan_speed_input = st.number_input(
+        "Scanning Speed (v_scan, mm/s)",
+        min_value=500.0,
+        max_value=1500.0,
+        value=st.session_state.scan_speed,
+        step=10.0,
+        key="scan_speed_input",
+        help="Scanning speed in mm/s (default: 800 mm/s)"
+    )
+    st.session_state.scan_speed = scan_speed_input
+    scan_speed = st.slider(
+        "Scanning Speed Slider (v_scan, mm/s)",
+        min_value=500.0,
+        max_value=1500.0,
+        value=st.session_state.scan_speed,
+        step=10.0,
+        key="scan_speed_slider",
+        help="Adjust scanning speed"
+    )
     st.session_state.scan_speed = scan_speed
+
+    hatch_spacing_input = st.number_input(
+        "Hatch Spacing (l_h, μm)",
+        min_value=10.0,
+        max_value=200.0,
+        value=st.session_state.hatch_spacing,
+        step=5.0,
+        key="hatch_spacing_input",
+        help="Hatch spacing in micrometers (default: 70 μm)"
+    )
+    st.session_state.hatch_spacing = hatch_spacing_input
+    hatch_spacing = st.slider(
+        "Hatch Spacing Slider (l_h, μm)",
+        min_value=10.0,
+        max_value=200.0,
+        value=st.session_state.hatch_spacing,
+        step=5.0,
+        key="hatch_spacing_slider",
+        help="Adjust hatch spacing"
+    )
     st.session_state.hatch_spacing = hatch_spacing
+
+    layer_thickness_input = st.number_input(
+        "Layer Thickness (l_t, μm)",
+        min_value=10.0,
+        max_value=100.0,
+        value=st.session_state.layer_thickness,
+        step=5.0,
+        key="layer_thickness_input",
+        help="Layer thickness in micrometers (default: 30 μm)"
+    )
+    st.session_state.layer_thickness = layer_thickness_input
+    layer_thickness = st.slider(
+        "Layer Thickness Slider (l_t, μm)",
+        min_value=10.0,
+        max_value=100.0,
+        value=st.session_state.layer_thickness,
+        step=5.0,
+        key="layer_thickness_slider",
+        help="Adjust layer thickness"
+    )
     st.session_state.layer_thickness = layer_thickness
 
 with col2:
@@ -58,26 +144,35 @@ with col2:
     aed = laser_power / (scan_speed * (hatch_spacing / 1000))
     ved = laser_power / (scan_speed * (hatch_spacing / 1000) * (layer_thickness / 1000))
 
-    # Render LaTeX formulas and values
+    # Render LaTeX formulas with numerical values and final results
     with st.container():
         st.markdown('<div class="metric-card">', unsafe_allow_html=True)
         st.markdown("**Linear Energy Density (LED)**")
-        st.latex(r"\text{LED} = \frac{P_l}{v_{\text{scan}}}")
-        st.write(f"**Value:** {led:.2f} J/mm")
+        st.markdown(
+            f'<span class="formula">$ \\text{{LED}} = \\frac{{P_l}}{{v_{{\\text{{scan}}}}}} = \\frac{{{laser_power:.1f}}}{{{scan_speed:.1f}}} \\approx {led:.2f} \\, \\text{{J/mm}}$</span>',
+            unsafe_allow_html=True
+        )
+        st.markdown(f"**Final Value:** {led:.2f} J/mm")
         st.markdown('</div>', unsafe_allow_html=True)
 
     with st.container():
         st.markdown('<div class="metric-card">', unsafe_allow_html=True)
         st.markdown("**Areal Energy Density (AED)**")
-        st.latex(r"\text{AED} = \frac{P_l}{v_{\text{scan}} \cdot l_h}")
-        st.write(f"**Value:** {aed:.2f} J/mm²")
+        st.markdown(
+            f'<span class="formula">$ \\text{{AED}} = \\frac{{P_l}}{{v_{{\\text{{scan}}}} \\cdot l_h}} = \\frac{{{laser_power:.1f}}}{{{scan_speed:.1f} \\cdot {hatch_spacing/1000:.4f}}} \\approx {aed:.2f} \\, \\text{{J/mm}}^2$</span>',
+            unsafe_allow_html=True
+        )
+        st.markdown(f"**Final Value:** {aed:.2f} J/mm²")
         st.markdown('</div>', unsafe_allow_html=True)
 
     with st.container():
         st.markdown('<div class="metric-card">', unsafe_allow_html=True)
         st.markdown("**Volumetric Energy Density (VED)**")
-        st.latex(r"\text{VED} = \frac{P_l}{v_{\text{scan}} \cdot l_h \cdot l_t}")
-        st.write(f"**Value:** {ved:.2f} J/mm³")
+        st.markdown(
+            f'<span class="formula">$ \\text{{VED}} = \\frac{{P_l}}{{v_{{\\text{{scan}}}} \\cdot l_h \\cdot l_t}} = \\frac{{{laser_power:.1f}}}{{{scan_speed:.1f} \\cdot {hatch_spacing/1000:.4f} \\cdot {layer_thickness/1000:.4f}}} \\approx {ved:.2f} \\, \\text{{J/mm}}^3$</span>',
+            unsafe_allow_html=True
+        )
+        st.markdown(f"**Final Value:** {ved:.2f} J/mm³")
         st.markdown('</div>', unsafe_allow_html=True)
 
 # Visualization
