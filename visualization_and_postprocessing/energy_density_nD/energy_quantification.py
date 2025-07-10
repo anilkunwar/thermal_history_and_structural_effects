@@ -76,7 +76,7 @@ with col1:
 
     
     scan_speed_input = st.number_input(
-        label="Scanning Speed ($v_{\\text{scan}}$ mm/s)",
+        label="Scanning Speed ($v_{\\text{scan}}$, mm/s)",
         min_value=500.0,
         max_value=1500.0,
         value=st.session_state.scan_speed,
@@ -86,7 +86,7 @@ with col1:
     )
     st.session_state.scan_speed = scan_speed_input
     scan_speed = st.slider(
-        label="Scanning Speed ($v_{\\text{scan}}$ mm/s)",
+        label="Scanning Speed ($v_{\\text{scan}}$, mm/s)",
         min_value=500.0,
         max_value=1500.0,
         value=st.session_state.scan_speed,
