@@ -54,7 +54,7 @@ with col1:
 
     # Input boxes and sliders
     laser_power_input = st.number_input(
-        "Laser Power (P_l, W)",
+        "Laser Power ($P_{\\text{l}}$, W)",
         min_value=100.0,
         max_value=500.0,
         value=st.session_state.laser_power,
@@ -64,7 +64,7 @@ with col1:
     )
     st.session_state.laser_power = laser_power_input
     laser_power = st.slider(
-        "Laser Power Slider (P_l, W)",
+        "Laser Power Slider ($P_{\\text{l}}$, W)",
         min_value=100.0,
         max_value=500.0,
         value=st.session_state.laser_power,
@@ -118,7 +118,7 @@ with col1:
     st.session_state.hatch_spacing = hatch_spacing
 
     layer_thickness_input = st.number_input(
-        "Layer Thickness (($l_{\\text{t}}$, μm))",
+        "Layer Thickness ($l_{\\text{t}}$, μm)",
         min_value=10.0,
         max_value=100.0,
         value=st.session_state.layer_thickness,
@@ -128,7 +128,7 @@ with col1:
     )
     st.session_state.layer_thickness = layer_thickness_input
     layer_thickness = st.slider(
-        "Layer Thickness Slider (($l_{\\text{t}}$, μm))",
+        "Layer Thickness Slider ($l_{\\text{t}}$, μm)",
         min_value=10.0,
         max_value=100.0,
         value=st.session_state.layer_thickness,
