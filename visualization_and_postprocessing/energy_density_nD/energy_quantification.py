@@ -117,7 +117,7 @@ with col1:
     st.session_state.hatch_spacing = hatch_spacing
 
     layer_thickness_input = st.number_input(
-        "Layer Thickness (l_t, μm)",
+        "Layer Thickness ((lₜ, μm))",
         min_value=10.0,
         max_value=100.0,
         value=st.session_state.layer_thickness,
@@ -127,7 +127,7 @@ with col1:
     )
     st.session_state.layer_thickness = layer_thickness_input
     layer_thickness = st.slider(
-        "Layer Thickness Slider (l_t, μm)",
+        "Layer Thickness Slider ((lₜ, μm))",
         min_value=10.0,
         max_value=100.0,
         value=st.session_state.layer_thickness,
