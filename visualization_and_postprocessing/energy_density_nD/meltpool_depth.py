@@ -3,6 +3,19 @@ import plotly.graph_objects as go
 import numpy as np
 import matplotlib.pyplot as plt
 import io
+import matplotlib
+
+# Check if LaTeX is available
+try:
+    matplotlib.checkdep_usetex(True)
+    latex_available = True
+    plt.rc('text', usetex=True)
+    plt.rc('font', family='serif')
+    plt.rc('text.latex', preamble=r'\usepackage{amsmath}\usepackage{textcomp}')
+except Exception:
+    latex_available = False
+    plt.rc('text', usetex=False)
+    plt.rc('font', family='sans-serif')
 
 # Set page configuration
 st.set_page_config(page_title="AED vs Depth of Meltpool", layout="wide", page_icon="📊")
@@ -32,14 +45,13 @@ st.markdown("""
     </script>
 """, unsafe_allow_html=True)
 
-# Configure Matplotlib LaTeX preamble
-plt.rc('text', usetex=False)
-plt.rc('font', family='serif')
-plt.rc('text.latex', preamble=r'\usepackage{amsmath}\usepackage{textcomp}')
+# Warning if LaTeX is unavailable
+if not latex_available:
+    st.warning("LaTeX is not installed or accessible. Matplotlib will use default rendering instead of LaTeX. For full LaTeX support, install a LaTeX distribution (e.g., TeX Live or MiKTeX).")
 
 # Title
 st.markdown('<div class="header">AED vs d^max_MPB Plotter</div>', unsafe_allow_html=True)
-st.markdown("Visualize the relationship between **Areal Energy Density (AED)** and **Maximum Vertical Distance to Melt Pool Boundary (d^max_MPB)** with customizable plot settings. Use LaTeX syntax: double backslashes (e.g., $\\text{AED (J/mm}^2\\text{)}$) for Plotly, single backslashes (e.g., $d^\\text{max}_\\text{MPB}$) for Matplotlib.")
+st.markdown("Visualize the relationship between **Areal Energy Density (AED)** and **Maximum Vertical Distance to Melt Pool Boundary (d^max_MPB)** with customizable plot settings. For Plotly, use LaTeX with double backslashes (e.g., $\\text{AED (J/mm}^2\\text{)}$). For Matplotlib, use single backslashes if LaTeX is available (e.g., $d^\\text{max}_\\text{MPB}$), or plain text if not.")
 
 # Data
 data = [[4.46, 123.0], [3.57, 104.0], [2.98, 101.0], [6.25, 128.0], [5.0, 119.0], [4.17, 107.0]]
@@ -75,13 +87,12 @@ with col1:
     st.markdown(f"**Curve Legend:** {plotly_curve_label}", unsafe_allow_html=True)
     
     # Matplotlib LaTeX inputs
-    st.markdown('<div class="subheader">Matplotlib LaTeX Labels (use single \\)</div>', unsafe_allow_html=True)
-    mpl_title = st.text_input("Matplotlib Plot Title (LaTeX)", r"$\text{Effect of AED on } d^\text{max}_\text{MPB}$", help="Enter title with LaTeX, e.g., $d^\text{max}_\text{MPB}$")
-    mpl_x_label = st.text_input("Matplotlib X-Axis Label (LaTeX)", r"$\text{AED (J/mm}^2\text{)}$", help="Enter x-axis label with LaTeX, e.g., $\text{AED (J/mm}^2\text{)}$")
-    mpl_y_label = st.text_input("Matplotlib Y-Axis Label (LaTeX)", r"$d^\text{max}_\text{MPB}$ ($\mu\text{m}$)", help="Enter y-axis label with LaTeX, e.g., $d^\text{max}_\text{MPB}$ ($\mu\text{m}$)")
-    mpl_point_label = st.text_input("Matplotlib Data Points Legend (LaTeX)", r"$\text{Data Points}$", help="Enter legend label for points with LaTeX")
-    mpl_curve_label = st.text_input("Matplotlib Fitted Curve Legend (LaTeX)", r"$\text{Quadratic Fit: } y = ax^2 + bx + c$", help="Enter legend label for curve with LaTeX")
-    #mpl_curve_label = st.text_input("Matplotlib Fitted Curve Legend (LaTeX)", r"$\text{Quadratic Fit: y = ax^2 + bx + c } $", help="Enter legend label for curve with LaTeX")
+    st.markdown(f'<div class="subheader">Matplotlib Labels {"(use single \\ for LaTeX if available, else plain text)" if not latex_available else "(use single \\ for LaTeX)"}</div>', unsafe_allow_html=True)
+    mpl_title = st.text_input("Matplotlib Plot Title", r"$\text{Effect of AED on } d^\text{max}_\text{MPB}$" if latex_available else "Effect of AED on d_max_MPB", help="Enter title with LaTeX (e.g., $d^\text{max}_\text{MPB}$) if LaTeX is available, else plain text")
+    mpl_x_label = st.text_input("Matplotlib X-Axis Label", r"$\text{AED (J/mm}^2\text{)}$" if latex_available else "AED (J/mm²)", help="Enter x-axis label with LaTeX (e.g., $\text{AED (J/mm}^2\text{)}$) if LaTeX is available, else plain text")
+    mpl_y_label = st.text_input("Matplotlib Y-Axis Label", r"$d^\text{max}_\text{MPB}$ ($\mu\text{m}$)" if latex_available else "d_max_MPB (μm)", help="Enter y-axis label with LaTeX (e.g., $d^\text{max}_\text{MPB}$ ($\mu\text{m}$)) if LaTeX is available, else plain text")
+    mpl_point_label = st.text_input("Matplotlib Data Points Legend", r"$\text{Data Points}$" if latex_available else "Data Points", help="Enter legend label for points with LaTeX if LaTeX is available, else plain text")
+    mpl_curve_label = st.text_input("Matplotlib Fitted Curve Legend", r"$\text{Quadratic Fit: } y = ax^2 + bx + c$" if latex_available else "Quadratic Fit: y = ax^2 + bx + c", help="Enter legend label for curve with LaTeX if LaTeX is available, else plain text")
     
     # Matplotlib LaTeX preview
     st.markdown('<div class="subheader">Matplotlib LaTeX Preview</div>', unsafe_allow_html=True)
@@ -90,6 +101,11 @@ with col1:
     st.markdown(f"**Y-axis:** {mpl_y_label}", unsafe_allow_html=True)
     st.markdown(f"**Points Legend:** {mpl_point_label}", unsafe_allow_html=True)
     st.markdown(f"**Curve Legend:** {mpl_curve_label}", unsafe_allow_html=True)
+    
+    # Font size sliders
+    st.markdown('<div class="subheader">Font Sizes</div>', unsafe_allow_html=True)
+    axis_label_font_size = st.slider("Axis Label Font Size (pt)", 10, 24, 14, step=1, help="Adjust font size for axis labels")
+    tick_label_font_size = st.slider("Axis Tick Label Font Size (pt)", 8, 20, 12, step=1, help="Adjust font size for axis tick labels")
     
     # Customization options
     curve_color = st.color_picker("Curve Color", "#FF4B4B", help="Select color for the fitted curve")
@@ -133,7 +149,7 @@ with col2:
     
     # Update Plotly layout
     fig_plotly.update_layout(
-        title=dict(text=plotly_title, x=0.5, xanchor="center"),
+        title=dict(text=plotly_title, x=0.5, xanchor="center", font=dict(size=axis_label_font_size)),
         xaxis_title=plotly_x_label,
         yaxis_title=plotly_y_label,
         width=fig_width,
@@ -158,7 +174,9 @@ with col2:
             ticklen=tick_length,
             tickwidth=tick_width,
             showline=True,
-            gridcolor="lightgrey"
+            gridcolor="lightgrey",
+            tickfont=dict(size=tick_label_font_size),
+            titlefont=dict(size=axis_label_font_size)
         ),
         yaxis=dict(
             linecolor="black",
@@ -168,7 +186,9 @@ with col2:
             ticklen=tick_length,
             tickwidth=tick_width,
             showline=True,
-            gridcolor="lightgrey"
+            gridcolor="lightgrey",
+            tickfont=dict(size=tick_label_font_size),
+            titlefont=dict(size=axis_label_font_size)
         ),
         plot_bgcolor="white",
         paper_bgcolor="white"
@@ -186,22 +206,20 @@ with col2:
     ax.scatter(aed, dmax, c=point_color, s=point_size**2, label=mpl_point_label)
     
     # Fitted curve
-    #ax.plot(aed_fit, dmax_fit, c=curve_color, linewidth=curve_thickness, 
-            #label=f"{mpl_curve_label} ($y = {coeffs[0]:.2f}x^2 + {coeffs[1]:.2f}x + {coeffs[2]:.2f}$)")
     ax.plot(aed_fit, dmax_fit, c=curve_color, linewidth=curve_thickness, 
-            label=f"{mpl_curve_label}")
+            label=f"{mpl_curve_label} ($y = {coeffs[0]:.2f}x^2 + {coeffs[1]:.2f}x + {coeffs[2]:.2f}$)")
     
     # Configure Matplotlib plot
-    ax.set_title(mpl_title, fontsize=16, pad=15)
-    ax.set_xlabel(mpl_x_label, fontsize=14)
-    ax.set_ylabel(mpl_y_label, fontsize=14)
+    ax.set_title(mpl_title, fontsize=axis_label_font_size, pad=15)
+    ax.set_xlabel(mpl_x_label, fontsize=axis_label_font_size)
+    ax.set_ylabel(mpl_y_label, fontsize=axis_label_font_size)
     
     # Axis and tick settings
     ax.spines['top'].set_linewidth(axis_line_thickness)
     ax.spines['right'].set_linewidth(axis_line_thickness)
     ax.spines['left'].set_linewidth(axis_line_thickness)
     ax.spines['bottom'].set_linewidth(axis_line_thickness)
-    ax.tick_params(axis='both', which='major', length=tick_length, width=tick_width, labelsize=12)
+    ax.tick_params(axis='both', which='major', length=tick_length, width=tick_width, labelsize=tick_label_font_size)
     ax.grid(True, color='lightgrey', linestyle='--', alpha=0.7)
     
     # Legend
@@ -226,4 +244,4 @@ st.markdown(fr"$\text{{Coefficients: }} a = {coeffs[0]:.4f}, b = {coeffs[1]:.4f}
 
 # Footer
 st.markdown("---")
-st.markdown("Data based on AED and meltpool depth measurements for AlSiMg1.4Zr alloy.")
+st.markdown("Data based on AED and meltpool depth measurements for AlSiMg1.4Zr alloy.", unsafe_allow_html=True)
