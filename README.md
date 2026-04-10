@@ -61,3 +61,8 @@ a. a postprocessor to compute the unstable stacking fault energy and ideal shear
 a. the temperature-time-vn.py constructs the temporal variation of Temperature of given points  at different vertical depths e.g. 0, 15 and 30 micrometer from the surface of a powder bed, when processed by laser in two scans (forward scan and return scan) at two input power values i.e. 250 W and 350 W. The scan speed for laser with P = 250 W is 1200 mm/s whereas that for laser with higher power is 800 mm/s. 
 
 b. it might be necessary to merge the individual csv files downloaded at different timesteps size to a single csv file consisting the column of "t(ms)". the merging of csv files can be performed via csvmergertoolkit made available at https://github.com/anilkunwar/csvmergertoolkit
+
+
+# How to Cite This Work: 
+
+Wang, X., Geng, Y., Oliinyk, Y., Zhang, Z., & Kunwar, A. (2025). Multiscale computational and experimental insights into thermal history and composition based study of strength–ductility synergy in Zr-enhanced AlSiMg alloys. Materials Science and Engineering: A, 944, 148865. https://doi.org/10.1016/j.msea.2025.148865
