@@ -387,11 +387,15 @@ with tab2:
     P_grid, V_grid = np.meshgrid(power_range, speed_range)
     VED_grid = P_grid / (V_grid * h_mm * t_mm)
 
+    # FIXED: title is now a nested dict, not a flat string with titleside
     fig2 = go.Figure(data=go.Contour(
         z=VED_grid, x=power_range, y=speed_range,
         colorscale="Plasma", ncontours=20,
         contours=dict(coloring="heatmap", showlabels=True, labelfont=dict(size=10, color="white")),
-        colorbar=dict(title="VED (J/mm³)", titleside="right"),
+        colorbar=dict(
+            title=dict(text="VED (J/mm³)", side="right"),
+            tickfont=dict(size=10)
+        ),
         hovertemplate="Power: %{x:.0f} W<br>Speed: %{y:.0f} mm/s<br>VED: %{z:.2f} J/mm³<<extra></extra>"
     ))
     fig2.add_trace(go.Scatter(
