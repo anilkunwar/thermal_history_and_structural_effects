@@ -47,7 +47,14 @@ Named Entity Recognition for Stacking Fault Energy of Alloys (using regex, PMI):
 [![Hollomon parameters via Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://hollomonparameters.streamlit.app/)
 
 # Calculation of Linear , Area and Volumetric Energy Density
+
+# Stable Version
+
 [![meaningtowords](https://img.shields.io/badge/laserenergydensity-streamlit-red)](https://energydensity1d2d3d.streamlit.app/)
+
+# Development Version
+
+[![meaningtowords](https://img.shields.io/badge/laserenergydensity-streamlit-red)](https://quantification-laserprocessing-energydensity1d2d3d.streamlit.app/)
 
 # How meltpool depth varies with Areal Energy Density in AlMgSi1.4Zr Alloys
 [![meaningtowords](https://img.shields.io/badge/meltpooldepth-streamlit-red)](https://meltpool-depth-variation.streamlit.app/)
