@@ -66,7 +66,7 @@ with col1:
     laser_power = st.slider(
         "Laser Power Slider ($P_{\\text{l}}$, W)",
         min_value=100.0,
-        max_value=500.0,
+        max_value=1000.0,
         value=st.session_state.laser_power,
         step=10.0,
         key="laser_power_slider",
@@ -77,7 +77,7 @@ with col1:
     
     scan_speed_input = st.number_input(
         label="Scanning Speed ($v_{\\text{scan}}$, mm/s)",
-        min_value=500.0,
+        min_value=100.0,
         max_value=1500.0,
         value=st.session_state.scan_speed,
         step=10.0,
@@ -87,7 +87,7 @@ with col1:
     st.session_state.scan_speed = scan_speed_input
     scan_speed = st.slider(
         label="Scanning Speed ($v_{\\text{scan}}$, mm/s)",
-        min_value=500.0,
+        min_value=100.0,
         max_value=1500.0,
         value=st.session_state.scan_speed,
         step=10.0,
