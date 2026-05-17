@@ -487,13 +487,17 @@ with c2:
 
 with c3:
     st.markdown("""
-    <div style="text-align: right; color: #64748b; font-size: 0.9em; line-height: 1.5;">
-    <b>📚 Reference:</b><br>
-    Wang, X., Geng, Y., Oliinyk, Y., Zhang, Z., & Kunwar, A. (2025).<<br>
-    <em>Multiscale Computation and Experimental Insights into Thermal History and Composition based Study of Strength-Ductility Synergy in Zr-Enhanced AlSiMg Alloys</em>.<<br><br>
-    <b>⚠️ Disclaimer:</b> For research and educational purposes. Validate experimentally for production use.
+    <div style="text-align: right; color: #64748b; font-size: 0.9em; line-height: 1.6;">
+        <b>📚 Reference:</b><br>
+        Wang, X., Geng, Y., Oliinyk, Y., Zhang, Z., & Kunwar, A. (2025).<<br>
+        <em>Multiscale computational and experimental insights into thermal history and composition based study of strength–ductility synergy in Zr-enhanced AlSiMg alloys.</em><br>
+        <em>Materials Science and Engineering: A</em>, 944, 148865.<br>
+        <a href="https://doi.org/10.1016/j.msea.2025.148865" target="_blank" style="color: #4f46e5; text-decoration: none; font-weight: 500;">
+            https://doi.org/10.1016/j.msea.2025.148865 🔗
+        </a>
     </div>
     """, unsafe_allow_html=True)
+    
 
 st.markdown("""
 <div class="footer">
